@@ -2,12 +2,8 @@ package org.opensrp.web.listener;
 
 import java.util.concurrent.TimeUnit;
 
-<<<<<<< HEAD
 import org.opensrp.register.mcare.OpenSRPScheduleConstants;
-=======
 import org.opensrp.connector.openmrs.constants.OpenmrsConstants;
-import org.opensrp.register.DrishtiScheduleConstants;
->>>>>>> 74f2c74... MK: Schedule tracker syncer added
 import org.opensrp.scheduler.RepeatingSchedule;
 import org.opensrp.scheduler.TaskSchedulerService;
 import org.springframework.beans.factory.annotation.Autowired;
