@@ -33,7 +33,7 @@ public class Elco extends MotechBaseDataObject {
 	@JsonProperty
 	private String END;
 	@JsonProperty
-    private String isClosed;
+    	private String isClosed;
 	@JsonProperty
 	private String GOBHHID;
 	@JsonProperty
@@ -120,7 +120,7 @@ public class Elco extends MotechBaseDataObject {
 		this.PROVIDERID = PROVIDERID;
 		return this;
 	}
-	public Elco withLOCATIONID(String LOCAoTIONID) {
+	public Elco withLOCATIONID(String LOCATIONID) {
 		this.LOCATIONID = LOCATIONID;
 		return this;
 	}
