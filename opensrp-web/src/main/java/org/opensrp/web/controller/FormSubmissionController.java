@@ -136,31 +136,46 @@ public class FormSubmissionController {
             });
             for (FormSubmission formSubmission : fsl) {
             	if(openmrsConnector.isOpenmrsForm(formSubmission)){
+            		System.out.println("Sending data to openMRS/***********************************************************************/ entityId: " + formSubmission.entityId());
 	            	JSONObject p = patientService.getPatientByIdentifier(formSubmission.entityId());
 	            	
-	            	if(p != null){	            		
-	            		Event e = openmrsConnector.getEventFromFormSubmission(formSubmission);
-		        		//System.out.println(encounterService.createEncounter(e));
+	            	if(p != null){	 // HO           		
+	            	    System.out.println("Existing patient found into openMRS /***********************************************************************/ ");
+	            		Event e;
+	    				Map<String, Map<String, Object>> dep;
+	    				dep = openmrsConnector.getDependentClientsFromFormSubmission(formSubmission);
+	    				if(dep.size()>0){ //HOW(n)
+	    					System.out.println("Dependent client exist into formsubmission /***********************************************************************/ ");
+	    		    		for (Map<String, Object> cm : dep.values()) {
+	    		    				System.out.println(patientService.createPatient((Client)cm.get("client")));
+	    		    				System.out.println(encounterService.createEncounter((Event)cm.get("event")));
+	    		    		}
+	    				}	
+	    				//HOW(0)
+	    				e = openmrsConnector.getEventFromFormSubmission(formSubmission);
+	    				System.out.println("Creates and encounter for household head /***********************************************************************/ ");
+	    				System.out.println(encounterService.createEncounter(e)); 
 	            	}
-	            	else {
-	            		Map<String, Map<String, Object>> dep = openmrsConnector.getDependentClientsFromFormSubmission(formSubmission);
-	            		
-	            		if(dep.size()>0){
-	            			Client hhhClient = openmrsConnector.getClientFromFormSubmission(formSubmission);
-	            			Event hhhEvent = openmrsConnector.getEventFromFormSubmission(formSubmission);
-	            			OpenmrsHouseHold hh = new OpenmrsHouseHold(hhhClient, hhhEvent);
-	    	    			for (Map<String, Object> cm : dep.values()) {
-	    	    				hh.addHHMember((Client)cm.get("client"), (Event)cm.get("event"));
-	    	    			}
-	    	    			
-	    	    			householdService.saveHH(hh);
-	            		}
-	            		else {
-	            			Client c = openmrsConnector.getClientFromFormSubmission(formSubmission);
-	            			//System.out.println(patientService.createPatient(c));
-	            			Event e = openmrsConnector.getEventFromFormSubmission(formSubmission);
-			        		//System.out.println(encounterService.createEncounter(e));
-	            		}
+	            	else { //Hn
+	            		Map<String, Map<String, Object>> dep;
+						dep = openmrsConnector.getDependentClientsFromFormSubmission(formSubmission);
+						if(dep.size()>0){ //HnW(n)
+							System.out.println("Dependent client exist into formsubmission /***********************************************************************/ ");
+		        			Client hhhClient = openmrsConnector.getClientFromFormSubmission(formSubmission);
+		        			Event hhhEvent = openmrsConnector.getEventFromFormSubmission(formSubmission);
+		        			OpenmrsHouseHold hh = new OpenmrsHouseHold(hhhClient, hhhEvent);
+			    			for (Map<String, Object> cm : dep.values()) {
+			    				hh.addHHMember((Client)cm.get("client"), (Event)cm.get("event"));
+			    			}		    			
+			    			householdService.saveHH(hh);
+					    }
+						else {//HnW(0)
+							System.out.println("Patient and Dependent client not exist into openmrs /***********************************************************************/ ");
+		        			Client c = openmrsConnector.getClientFromFormSubmission(formSubmission);
+		        			System.out.println(patientService.createPatient(c));
+		        			Event e = openmrsConnector.getEventFromFormSubmission(formSubmission);
+			        		System.out.println(encounterService.createEncounter(e));
+		        		}
 	            	}
             	}
     		}
@@ -177,7 +192,7 @@ public class FormSubmissionController {
         }
         return new ResponseEntity<>(CREATED);
     }
-    
+
     @RequestMapping(method = GET, value = "/entity-id")
     @ResponseBody
     public ResponseEntity<String> getEntityIdForBRN(@RequestParam("brn-id") List<String> brnIdList)

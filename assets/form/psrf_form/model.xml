@@ -1,6 +1,6 @@
 <model>
     <instance>
-        <PregnancySurveillanceRegistrationForm encounter_type="Pregnancy Surveillance and Registration" id="PregnancySurveillanceAndRegistrationForm" version="201510050926">
+        <PregnancySurveillanceRegistrationForm encounter_type="Pregnancy Surveillance and Registration" id="PregnancySurveillanceAndRegistrationForm" version="201510281226">
           <formhub>
             <uuid/>
           </formhub>
@@ -20,7 +20,7 @@
           <end openmrs_entity="encounter" openmrs_entity_id="encounter_end"/>
           <FWPSRDATE openmrs_entity="concept" openmrs_entity_id="160753AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
           <FWCONFIRMATION/>
-          <FWPSRSTS openmrs_entity="concept" openmrs_entity_id="161641AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+          <FWPSRSTS openmrs_entity="concept" openmrs_entity_id="163088AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
           <psrf_met>
             <FWPSRLMP openmrs_entity="concept" openmrs_entity_id="1427AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
             <FWPSRPREGSTS openmrs_entity="concept" openmrs_entity_id="162942AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
@@ -36,8 +36,10 @@
               <mother_wom_nid/>
               <mother_wom_bid/>
               <mother_wom_age/>
-              <FWPSRPREGWTD openmrs_entity="concept" openmrs_entity_id="1426AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
-              <FWPSRHUSPREGWTD/>
+              <mother_wom_lmp/>
+              <mother_valid/>
+              <FWPSRPREGWTD openmrs_entity="concept" openmrs_entity_id="163085AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+              <FWPSRHUSPREGWTD openmrs_entity="concept" openmrs_entity_id="163086AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
               <FWPSREVRPREG openmrs_entity="concept" openmrs_entity_id="162970AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
               <FWPSRTOTBIRTH openmrs_entity="concept" openmrs_entity_id="160601AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
               <FWPSRNBDTH openmrs_entity="concept" openmrs_entity_id="162968AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
@@ -57,16 +59,18 @@
               <FWPSRWOMEDU openmrs_entity="concept" openmrs_entity_id="1545AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
               <FWPSRHHLAT openmrs_entity="concept" openmrs_entity_id="159741AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
               <FWPSRHHRICE openmrs_entity="concept" openmrs_entity_id="162962AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
-              <FWPSRPHONE/>
+              <FWPSRPHONE openmrs_entity="concept" openmrs_entity_id="163089AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
               <FWPSRPHONENUM openmrs_entity="concept" openmrs_entity_id="159635AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
               <FWPSRMUAC openmrs_entity="concept" openmrs_entity_id="1343AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
             </psrf_pregnant>
           </psrf_met>
-          <FWVG/>
-          <FWHRP/>
-          <FWHR_PSR/>
-          <FWFLAGVALUE/>
+          <FWVG openmrs_entity="concept" openmrs_entity_id="163090AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+          <FWHRP openmrs_entity="concept" openmrs_entity_id="163092AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+          <FWHR_PSR openmrs_entity="concept" openmrs_entity_id="163091AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+          <FWFLAGVALUE openmrs_entity="concept" openmrs_entity_id="163093AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
           <FWSORTVALUE/>
+          <user_type>FWA</user_type>
+          <external_user_ID/>
           <meta>
             <instanceID/>
           </meta>

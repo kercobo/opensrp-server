@@ -44,9 +44,13 @@ public class ELCORegisterEntryDTO {
 	@JsonProperty
 	private String FWWOMRETYPENID;
 	@JsonProperty
+	private String FWWOMRETYPENID_CONCEPT;
+	@JsonProperty
 	private String FWWOMBID;
 	@JsonProperty
 	private String FWWOMRETYPEBID;
+	@JsonProperty
+	private String FWWOMRETYPEBID_CONCEPT;
 	@JsonProperty
 	private String FWHUSNAME;
 	@JsonProperty
@@ -164,12 +168,20 @@ public class ELCORegisterEntryDTO {
 		this.FWWOMRETYPENID = FWWOMRETYPENID;
 		return this;
 	}
+	public ELCORegisterEntryDTO withFWWOMRETYPENID_CONCEPT(String FWWOMRETYPENID_CONCEPT) {
+		this.FWWOMRETYPENID_CONCEPT = FWWOMRETYPENID_CONCEPT;
+		return this;
+	}
 	public ELCORegisterEntryDTO withFWWOMBID(String FWWOMBID) {
 		this.FWWOMBID = FWWOMBID;
 		return this;
 	}
 	public ELCORegisterEntryDTO withFWWOMRETYPEBID(String FWWOMRETYPEBID) {
 		this.FWWOMRETYPEBID = FWWOMRETYPEBID;
+		return this;
+	}
+	public ELCORegisterEntryDTO withFWWOMRETYPEBID_CONCEPT(String FWWOMRETYPEBID_CONCEPT) {
+		this.FWWOMRETYPEBID_CONCEPT = FWWOMRETYPEBID_CONCEPT;
 		return this;
 	}
 	public ELCORegisterEntryDTO withFWHUSNAME(String FWHUSNAME) {

@@ -397,6 +397,72 @@ public class AllConstants {
     	
     }
     
+    public static class ENCCVisitOneFields
+    {
+    	public static final String FWENC1DATE ="FWENC1DATE";
+    	public static final String FWENC1STS ="FWENC1STS";
+    	public static final String FWENC1BFINTN ="FWENC1BFINTN";
+    	public static final String FWENC1PRLCTL ="FWENC1PRLCTL";
+    	public static final String FWENC1DRYWM ="FWENC1DRYWM";
+    	public static final String FWENC1HDCOV ="FWENC1HDCOV";
+    	public static final String FWENC1BTHD ="FWENC1BTHD";
+    	public static final String FWENC1UMBS ="FWENC1UMBS";
+    	public static final String FWENC1DSFVRCLD ="FWENC1DSFVRCLD";
+    	public static final String FWENC1TEMP ="FWENC1TEMP";
+    	public static final String FWENC1DSFOULUMBS ="FWENC1DSFOULUMBS";
+    	public static final String FWENC1DSLIMBLUE ="FWENC1DSLIMBLUE";
+    	public static final String FWENC1DSSKNYLW ="FWENC1DSSKNYLW";
+    	public static final String FWENC1DSLETH ="FWENC1DSLETH";
+    	public static final String FWENC1DSDIFBRTH ="FWENC1DSDIFBRTH";
+    	public static final String FWENC1DSCONVL ="FWENC1DSCONVL";
+    	public static final String FWENC1DELCOMP ="FWENC1DELCOMP";
+    	
+    }
+    
+    public static class ENCCVisitTwoFields
+    {
+    	public static final String FWENC2DATE ="FWENC2DATE";
+    	public static final String FWENC2STS ="FWENC2STS";
+    	public static final String FWENC2BFINTN ="FWENC2BFINTN";
+    	public static final String FWENC2PRLCTL ="FWENC2PRLCTL";
+    	public static final String FWENC2DRYWM ="FWENC2DRYWM";
+    	public static final String FWENC2HDCOV ="FWENC2HDCOV";
+    	public static final String FWENC2BTHD ="FWENC2BTHD";
+    	public static final String FWENC2UMBS ="FWENC2UMBS";
+    	public static final String FWENC2DSFVRCLD ="FWENC2DSFVRCLD";
+    	public static final String FWENC2TEMP ="FWENC2TEMP";
+    	public static final String FWENC2DSFOULUMBS ="FWENC2DSFOULUMBS";
+    	public static final String FWENC2DSLIMBLUE ="FWENC2DSLIMBLUE";
+    	public static final String FWENC2DSSKNYLW ="FWENC2DSSKNYLW";
+    	public static final String FWENC2DSLETH ="FWENC2DSLETH";
+    	public static final String FWENC2DSDIFBRTH ="FWENC2DSDIFBRTH";
+    	public static final String FWENC2DSCONVL ="FWENC2DSCONVL";
+    	public static final String FWENC2DELCOMP ="FWENC2DELCOMP";
+    	
+    }
+    
+    public static class ENCCVisitThreeFields
+    {
+    	public static final String FWENC3DATE ="FWENC3DATE";
+    	public static final String FWENC3STS ="FWENC3STS";
+    	public static final String FWENC3BFINTN ="FWENC3BFINTN";
+    	public static final String FWENC3PRLCTL ="FWENC3PRLCTL";
+    	public static final String FWENC3DRYWM ="FWENC3DRYWM";
+    	public static final String FWENC3HDCOV ="FWENC3HDCOV";
+    	public static final String FWENC3BTHD ="FWENC3BTHD";
+    	public static final String FWENC3UMBS ="FWENC3UMBS";
+    	public static final String FWENC3DSFVRCLD ="FWENC3DSFVRCLD";
+    	public static final String FWENC3TEMP ="FWENC3TEMP";
+    	public static final String FWENC3DSFOULUMBS ="FWENC3DSFOULUMBS";
+    	public static final String FWENC3DSLIMBLUE ="FWENC3DSLIMBLUE";
+    	public static final String FWENC3DSSKNYLW ="FWENC3DSSKNYLW";
+    	public static final String FWENC3DSLETH ="FWENC3DSLETH";
+    	public static final String FWENC3DSDIFBRTH ="FWENC3DSDIFBRTH";
+    	public static final String FWENC3DSCONVL ="FWENC3DSCONVL";
+    	public static final String FWENC3DELCOMP ="FWENC3DELCOMP";
+    	
+    }
+    
     public static class ECRegistrationFields {
         public static final String CASTE = "caste";
         public static final String RELIGION = "religion";

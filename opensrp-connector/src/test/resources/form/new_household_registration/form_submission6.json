@@ -2,7 +2,7 @@
    "_id": "251ca0ef09df9af88f0e9d5f180115a3",
    "_rev": "1-e73e1d93acdcdaeb1d41a738da5d9284",
    "type": "FormSubmission",
-   "anmId": "demotest",
+   "anmId": "admin",
    "instanceId": "88c0e824-10b4-44c2-9429-754b8d823776",
    "formName": "new_household_registration",
    "entityId": "a3f2abf4-2699-4761-819a-cea739224164",
@@ -80,18 +80,21 @@
                    "source": "household.FWHOHBIRTHDATE"
                },
                {
+                   "name": "FWHOHBIRTHDATEAPPROX",
+                   "value": "1",
+                   "source": "household.FWHOHBIRTHDATEAPPROX"
+               },
+               {
                    "name": "FWHOHGENDER",
                    "value": "male",
                    "source": "household.FWHOHGENDER"
                },
                {
                    "name": "FWNHHMBRNUM",
-                   "value": "2",
                    "source": "household.FWNHHMBRNUM"
                },
                {
                    "name": "FWNHHMWRA",
-                   "value": "1",
                    "source": "household.FWNHHMWRA"
                },
                {
@@ -101,7 +104,6 @@
                },
                {
                    "name": "MWRA",
-                   "value": "2",
                    "source": "household.MWRA"
                }
            ],
@@ -148,6 +150,10 @@
                            "source": "elco.FWBIRTHDATE"
                        },
                        {
+                           "name": "FWBIRTHDATEAPPROX",
+                           "source": "elco.FWBIRTHDATEAPPROX"
+                       },
+                       {
                            "name": "FWGENDER",
                            "source": "elco.FWGENDER"
                        },
@@ -182,15 +188,16 @@
                    ],
                    "instances": [
                        {
-                           "GOBHHID": "",
-                           "JiVitAHHID": "",
-                           "FWWOMFNAME": "",
-                           "FWWOMLNAME": "",
+                           "GOBHHID": "48374",
+                           "JiVitAHHID": "78748",
+                           "FWWOMFNAME": "tEST First",
+                           "FWWOMLNAME": " lastname",
                            "FWWOMNID": "",
                            "FWWOMBID": "",
                            "FWHUSNAME": "",
-                           "FWBIRTHDATE": "",
-                           "FWGENDER": "",
+                           "FWBIRTHDATE": "2000-05-07",
+                           "FWBIRTHDATEAPPROX":"1",
+                           "FWGENDER": "Female",
                            "FWWOMAGE": "",
                            "display_age": "",
                            "FWNHWOMSTRMEN": "",

@@ -50,10 +50,10 @@ public class MultimediaServiceTest {
 	@Test
 	public void shouldSaveMultimediaFile() throws FileNotFoundException
 	{
-		  MultimediaDTO multimedia = new MultimediaDTO("1234567891", "opensrp","image/jpeg", "../assets/multimedia/opensrp/images/1234567891.jpg","nid");
-		
-		  FileInputStream fis = new FileInputStream("/home/user/Documents/image.jpeg");
-		  
+		System.out.println("multimediaDirPath: " + multimediaDirPath); 
+
+ MultimediaDTO multimedia = new MultimediaDTO("1234567891", "opensrp","image/jpeg", multimediaDirPath + "1234567891.jpg","nid");		
+		  FileInputStream fis = new FileInputStream(multimediaDirPath + "1234567890.jpg");		  
           MultipartFile multipartFile = null;
           
 		try {
@@ -65,13 +65,14 @@ public class MultimediaServiceTest {
 		
 		String status = multimediaService.saveMultimediaFile(multimedia,multipartFile);
 		
-		//Assert.assertEquals("success", status);
+		Assert.assertEquals("success", status);
 		
 	}
 	@Test
 	public void shouldGetMultimediaFiles() throws FileNotFoundException
 	{
-		 MultimediaDTO multimediaDTO = new MultimediaDTO("1234567890", "opensrp","image/jpeg", "../assets/multimedia/opensrp/images/1234567890.jpg","profile");
+	System.out.println("multimediaDirPath: " + multimediaDirPath); 		
+ MultimediaDTO multimediaDTO = new MultimediaDTO("1234567890", "opensrp","image/jpeg", multimediaDirPath + "1234567890.jpg","profile");
 		
 		Multimedia expectedMultimedia = new Multimedia()
 		.withCaseId(multimediaDTO.caseId())
@@ -80,7 +81,7 @@ public class MultimediaServiceTest {
 		.withFilePath(multimediaDTO.filePath())
 		.withFileCategory(multimediaDTO.fileCategory());
 		
-		FileInputStream fis = new FileInputStream("/home/user/Documents/image.jpeg");
+		FileInputStream fis = new FileInputStream(multimediaDirPath + "1234567890.jpg");
 		  
           MultipartFile multipartFile = null;
           

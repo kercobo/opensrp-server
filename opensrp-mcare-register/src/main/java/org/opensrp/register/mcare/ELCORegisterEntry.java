@@ -8,6 +8,7 @@ import java.util.Map;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.codehaus.jackson.annotate.JsonProperty;
 
 public class ELCORegisterEntry {
 	
@@ -43,9 +44,13 @@ public class ELCORegisterEntry {
 	
 	private String FWWOMRETYPENID;
 	
+	private String FWWOMRETYPENID_CONCEPT;
+	
 	private String FWWOMBID;
 	
 	private String FWWOMRETYPEBID;
+	
+	private String FWWOMRETYPEBID_CONCEPT;
 	
 	private String FWHUSNAME;
 	
@@ -162,12 +167,20 @@ public class ELCORegisterEntry {
 		this.FWWOMRETYPENID = FWWOMRETYPENID;
 		return this;
 	}
+	public ELCORegisterEntry withFWWOMRETYPENID_CONCEPT(String FWWOMRETYPENID_CONCEPT) {
+		this.FWWOMRETYPENID_CONCEPT = FWWOMRETYPENID_CONCEPT;
+		return this;
+	}
 	public ELCORegisterEntry withFWWOMBID(String FWWOMBID) {
 		this.FWWOMBID = FWWOMBID;
 		return this;
 	}
 	public ELCORegisterEntry withFWWOMRETYPEBID(String FWWOMRETYPEBID) {
 		this.FWWOMRETYPEBID = FWWOMRETYPEBID;
+		return this;
+	}
+	public ELCORegisterEntry withFWWOMRETYPEBID_CONCEPT(String FWWOMRETYPEBID_CONCEPT) {
+		this.FWWOMRETYPEBID_CONCEPT = FWWOMRETYPEBID_CONCEPT;
 		return this;
 	}
 	public ELCORegisterEntry withFWHUSNAME(String FWHUSNAME) {
@@ -307,11 +320,17 @@ public class ELCORegisterEntry {
 	public String FWWOMRETYPENID() {
 		return FWWOMRETYPENID;
 	}
+	public String FWWOMRETYPENID_CONCEPT() {
+		return FWWOMRETYPENID_CONCEPT;
+	}
 	public String FWWOMBID() {
 		return FWWOMBID;
 	}
 	public String FWWOMRETYPEBID() {
 		return FWWOMRETYPEBID;
+	}
+	public String FWWOMRETYPEBID_CONCEPT() {
+		return FWWOMRETYPEBID_CONCEPT;
 	}
 	public String FWHUSNAME() {
 		return FWHUSNAME;

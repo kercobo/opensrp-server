@@ -40,7 +40,7 @@ public class ScheduleService {
 
     public void enroll(String entityId, String scheduleName, String referenceDate) {
         String startingMilestoneName = getStartingMilestoneName(scheduleName, parse(referenceDate));
-        EnrollmentRequest request = new EnrollmentRequest(entityId, scheduleName, new Time(new LocalTime(13, 50)),
+        EnrollmentRequest request = new EnrollmentRequest(entityId, scheduleName, new Time(new LocalTime(8, 00)),
                 parse(referenceDate), null, null, null, startingMilestoneName, null);
         scheduleTrackingService.enroll(request);
     }
