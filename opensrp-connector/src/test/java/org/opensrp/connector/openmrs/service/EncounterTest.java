@@ -178,7 +178,7 @@ public class EncounterTest extends TestResourceLoader{
 			assertFalse(cl.getBaseEntity().getBirthdateApprox());
 		}
 	}	
-	
+	/*
 	@SuppressWarnings("unchecked")
 	@Test
 	public void shouldGetDataSpecifiedInGroupInsideSubform() throws IOException, ParseException, JSONException{
@@ -245,4 +245,4 @@ public class EncounterTest extends TestResourceLoader{
 			hhs.saveHH(hh);
 		}
 	}	
-}
+*/}
