@@ -45,5 +45,11 @@ public class AllElcos extends MotechBaseRepository<Elco> {
 				createQuery("all_open_elcos_for_provider").key(providerId)
 						.includeDocs(true), Elco.class);
 	}
+	@View(name = "all_open_elcos_for_provider", map = "function(doc) { if (doc.type === 'Elco' && doc.PROVIDERID) { emit(doc.PROVIDERID); } }")
+	public List<Elco> allOpenELCOs() {
+		return db.queryView(
+				createQuery("all_open_elcos_for_provider")
+						.includeDocs(true), Elco.class);
+	}
 
 }

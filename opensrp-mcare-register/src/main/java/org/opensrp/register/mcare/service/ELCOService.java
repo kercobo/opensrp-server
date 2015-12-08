@@ -133,7 +133,8 @@ public class ELCOService {
 					.put(FW_NHWOMHUSALV, elcoFields.get(FW_NHWOMHUSALV))
 					.put(FW_NHWOMHUSSTR, elcoFields.get(FW_NHWOMHUSSTR))
 					.put(FW_NHWOMHUSLIV, elcoFields.get(FW_NHWOMHUSLIV))
-					.put(FW_ELIGIBLE, elcoFields.get(FW_ELIGIBLE))			
+					.put(FW_ELIGIBLE, elcoFields.get(FW_ELIGIBLE))
+					.put(FW_ELIGIBLE2, elcoFields.get(FW_ELIGIBLE2))
 					.put(FW_WOMCOUNTRY, elcoFields.get(FW_WOMCOUNTRY))
 					.put(FW_WOMDIVISION, elcoFields.get(FW_WOMDIVISION))
 					.put(FW_WOMDISTRICT, elcoFields.get(FW_WOMDISTRICT))
@@ -198,7 +199,12 @@ public class ELCOService {
 					.put(FW_SORTVALUE, submission.getField(FW_SORTVALUE))
 					.put(START_DATE, submission.getField(START_DATE))
 					.put(END_DATE, submission.getField(END_DATE))
-					.put(REFERENCE_DATE, submission.getField(REFERENCE_DATE)).map();
+					.put(REFERENCE_DATE, submission.getField(REFERENCE_DATE))
+					.put(existing_ELCO, submission.getField(existing_ELCO))
+					.put(FWNOTELIGIBLE, submission.getField(FWNOTELIGIBLE))
+					.put(ELCO, submission.getField(ELCO))
+					.put(FW_ELIGIBLE, submission.getField(FW_ELIGIBLE))
+					.map();
 			
 			elco.PSRFDETAILS().add(psrf);	
 			
@@ -214,5 +220,7 @@ public class ELCOService {
 				ancService.registerANC(submission);
 				bnfService.registerBNF(submission);
 			}
+		
 	}
 }
+

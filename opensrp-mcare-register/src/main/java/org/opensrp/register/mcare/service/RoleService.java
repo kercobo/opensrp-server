@@ -30,12 +30,15 @@ public class RoleService {
 	
 	public String addRole(RoleDTO roleDTO)
 	{
+		
 		Role roleByUserName = allRoles.findByUserName(roleDTO.getUserName());
 		if (roleByUserName == null) {
 			try{
 				Role role = new Role();
 				role.withUserName(roleDTO.getUserName());
-				role.withRoleName(roleDTO.getRoleName());				
+				role.withRoleName(roleDTO.getRoleName());
+				role.withStatus(roleDTO.getStatus());
+				 
 				allRoles.add(role);
 				return "1";
 			}catch(Exception e){
@@ -54,6 +57,7 @@ public class RoleService {
 			role.setId(roleDTO.getRoleId());
 			role.setRevision(roles.getRevision());			
 			role.withUserName(roleDTO.getUserName());
+			role.withStatus(roleDTO.getStatus());
 			allRoles.update(role);
 			return "1";
 		}catch(Exception e){
@@ -68,7 +72,8 @@ public class RoleService {
 			RoleDTO roleDTO = new RoleDTO()
 			.withRoleName(role.getRoleName())
 			.withRoleId(role.getId())
-			.withUserName(role.getUserName());					
+			.withStatus(role.getStatus())
+			.withUserName(role.getUserName());			
 			roleList.add(roleDTO);			
 		}		
 		return roleList;

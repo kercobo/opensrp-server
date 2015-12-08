@@ -35,4 +35,11 @@ public class AllAcls  extends MotechBaseRepository<Acl>{
 						.includeDocs(true), Acl.class);
 	}
 	
+	@View(name = "all_active_role", map = "function(doc) { if (doc.type === 'Acl' && doc.status ==='Active') { emit(doc.roleName); } }")
+	public List<Acl> allActiveRoles() {
+		return db.queryView(
+				createQuery("all_active_role")
+						.includeDocs(true), Acl.class);
+	}
+	
 }

@@ -47,13 +47,13 @@ public class AclController {
 		this.openmrsUserService = openmrsUserService;
 	}
 
-	@RequestMapping(headers = { "Accept=application/json" }, method = POST, value = "/assing-user-to-role")
+	@RequestMapping(headers = { "Accept=application/json" }, method = POST, value = "/add-user")
 	public ResponseEntity<String> addRole(@RequestBody RoleDTO roleDTO) {
 		String message = roleService.addRole(roleDTO);
 		return new ResponseEntity<>(message,OK);
 	}
 	
-	@RequestMapping(headers = { "Accept=application/json" }, method = POST, value = "/edit-assing-user-to-role")
+	@RequestMapping(headers = { "Accept=application/json" }, method = POST, value = "/edit-user")
 	public ResponseEntity<String> editRole(@RequestBody RoleDTO roleDTO) {
 		String message = roleService.editRole(roleDTO);
 		return new ResponseEntity<>(message,OK);
@@ -93,6 +93,12 @@ public class AclController {
 	@ResponseBody
 	public ArrayList<AclDTO> getRolesAndAccessTokens() {
 		return (ArrayList<AclDTO>) aclService.getRolesAndAccessTokens();
+	}
+	
+	@RequestMapping(method = GET, value = "/all-active-roles-access-tokens")
+	@ResponseBody
+	public ArrayList<AclDTO> getActiveRolesAndAccessTokens() {
+		return (ArrayList<AclDTO>) aclService.getActiveRolesAndAccessTokens();
 	}
 	@RequestMapping(method = GET, value = "/all-roles-with-user")
 	@ResponseBody

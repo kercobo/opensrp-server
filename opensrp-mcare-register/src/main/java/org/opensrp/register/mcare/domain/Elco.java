@@ -97,6 +97,8 @@ public class Elco extends MotechBaseDataObject {
 	@JsonProperty
 	private String FWELIGIBLE;
 	@JsonProperty
+	private String FWELIGIBLE2;
+	@JsonProperty
 	private String FWWOMCOUNTRY;
 	@JsonProperty
 	private String FWWOMDIVISION;
@@ -282,6 +284,10 @@ public class Elco extends MotechBaseDataObject {
 		this.FWELIGIBLE = FWELIGIBLE;
 		return this;
 	}
+	public Elco withFWELIGIBLE2(String FWELIGIBLE2) {
+		this.FWELIGIBLE2 = FWELIGIBLE2;
+		return this;
+	}
 	public Elco withFWWOMCOUNTRY(String FWWOMCOUNTRY) {
 		this.FWWOMCOUNTRY = FWWOMCOUNTRY;
 		return this;
@@ -448,6 +454,9 @@ public class Elco extends MotechBaseDataObject {
 	}
 	public String FWELIGIBLE() {
 		return FWELIGIBLE;
+	}
+	public String FWELIGIBLE2() {
+		return FWELIGIBLE2;
 	}
 	public String FWWOMCOUNTRY() {
 		return FWWOMCOUNTRY;

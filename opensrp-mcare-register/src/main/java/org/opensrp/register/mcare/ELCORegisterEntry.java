@@ -87,6 +87,8 @@ public class ELCORegisterEntry {
 	
 	private String FWELIGIBLE;
 	
+	private String FWELIGIBLE2;
+	
 	private String FWWOMCOUNTRY;
 	
 	private String FWWOMDIVISION;
@@ -273,6 +275,10 @@ public class ELCORegisterEntry {
 		this.FWELIGIBLE = FWELIGIBLE;
 		return this;
 	}
+	public ELCORegisterEntry withFWELIGIBLE2(String FWELIGIBLE2) {
+		this.FWELIGIBLE2 = FWELIGIBLE2;
+		return this;
+	}
 	public ELCORegisterEntry withFWWOMCOUNTRY(String FWWOMCOUNTRY) {
 		this.FWWOMCOUNTRY = FWWOMCOUNTRY;
 		return this;
@@ -439,6 +445,9 @@ public class ELCORegisterEntry {
 	}
 	public String FWELIGIBLE() {
 		return FWELIGIBLE;
+	}
+	public String FWELIGIBLE2() {
+		return FWELIGIBLE2;
 	}
 	public String FWWOMCOUNTRY() {
 		return FWWOMCOUNTRY;

@@ -1,11 +1,15 @@
 package org.opensrp.web.controller;
 
+import org.opensrp.dto.register.ANC_RegisterDTO;
 import org.opensrp.dto.register.ELCORegisterDTO;
 import org.opensrp.dto.register.HHRegisterDTO;
+import org.opensrp.register.mcare.ANCRegister;
 import org.opensrp.register.mcare.ELCORegister;
 import org.opensrp.register.mcare.HHRegister;
+import org.opensrp.register.mcare.mapper.ANCRegisterMapper;
 import org.opensrp.register.mcare.mapper.ELCORegisterMapper;
 import org.opensrp.register.mcare.mapper.HHRegisterMapper;
+import org.opensrp.register.mcare.service.ANCRegisterService;
 import org.opensrp.register.mcare.service.ELCORegisterService;
 import org.opensrp.register.mcare.service.HHRegisterService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,24 +21,30 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.gson.Gson;
+
 @Controller
 public class RegisterController {
 
 	private static final RequestMethod[] GET = null;
 	private ELCORegisterService ecRegisterService;
 	private HHRegisterService hhRegisterService;
+	private ANCRegisterService ancRegisterService;
 	private ELCORegisterMapper ecRegisterMapper;
 	private HHRegisterMapper hhRegisterMapper;
+	private ANCRegisterMapper ancRegisterMapper;
 	
 	@Autowired
 	public RegisterController(ELCORegisterService ecRegisterService,
 			HHRegisterService hhRegisterService,
 			ELCORegisterMapper ecRegisterMapper,
-			HHRegisterMapper hhRegisterMapper) {
+			HHRegisterMapper hhRegisterMapper,ANCRegisterService ancRegisterService,ANCRegisterMapper ancRegisterMapper) {
 		this.ecRegisterService = ecRegisterService;
 		this.hhRegisterService = hhRegisterService;
 		this.ecRegisterMapper = ecRegisterMapper;
 		this.hhRegisterMapper = hhRegisterMapper;
+		this.ancRegisterService = ancRegisterService;
+		this.ancRegisterMapper = ancRegisterMapper;
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, value = "/registers/hh")
@@ -104,15 +114,16 @@ public class RegisterController {
     public ResponseEntity<ECRegisterDTO> ecRegister(@RequestParam("anm-id") String anmIdentifier) {
         ECRegister ecRegister = ecRegisterService.getRegisterForANM(anmIdentifier);
         return new ResponseEntity<>(ecRegisterMapper.mapToDTO(ecRegister), HttpStatus.OK);
-    }
+    }*/
 
-    @RequestMapping(method = GET, value = "/registers/anc")
+    @RequestMapping(method = RequestMethod.GET, value = "/registers/anc")
     @ResponseBody
-    public ResponseEntity<ANCRegisterDTO> ancRegister(@RequestParam("anm-id") String anmIdentifier) {
-        ANCRegister ancRegister = ancRegisterService.getRegisterForANM(anmIdentifier);
+    public ResponseEntity<ANC_RegisterDTO> ancRegister(@RequestParam("anm-id") String anmIdentifier) {
+        ANCRegister ancRegister = ancRegisterService.getANCRegisterForProvider(anmIdentifier);        
         return new ResponseEntity<>(ancRegisterMapper.mapToDTO(ancRegister), HttpStatus.OK);
+      
     }
-
+/*
     @RequestMapping(method = GET, value = "/registers/child")
     @ResponseBody
     public ResponseEntity<ChildRegisterDTO> childRegister(@RequestParam("anm-id") String anmIdentifier) {

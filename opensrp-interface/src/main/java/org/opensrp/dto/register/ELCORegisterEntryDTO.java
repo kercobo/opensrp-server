@@ -88,6 +88,8 @@ public class ELCORegisterEntryDTO {
 	@JsonProperty
 	private String FWELIGIBLE;
 	@JsonProperty
+	private String FWELIGIBLE2;
+	@JsonProperty
 	private String FWWOMCOUNTRY;
 	@JsonProperty
 	private String FWWOMDIVISION;
@@ -270,6 +272,10 @@ public class ELCORegisterEntryDTO {
 	}
 	public ELCORegisterEntryDTO withFWELIGIBLE(String FWELIGIBLE) {
 		this.FWELIGIBLE = FWELIGIBLE;
+		return this;
+	}
+	public ELCORegisterEntryDTO withFWELIGIBLE2(String FWELIGIBLE2) {
+		this.FWELIGIBLE2 = FWELIGIBLE2;
 		return this;
 	}
 	public ELCORegisterEntryDTO withFWWOMCOUNTRY(String FWWOMCOUNTRY) {

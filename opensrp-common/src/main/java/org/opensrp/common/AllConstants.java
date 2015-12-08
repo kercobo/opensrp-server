@@ -163,6 +163,7 @@ public class AllConstants {
     	public static final String FW_NHWOMHUSSTR = "FWNHWOMHUSSTR";
     	public static final String FW_NHWOMHUSLIV = "FWNHWOMHUSLIV";
     	public static final String FW_ELIGIBLE = "FWELIGIBLE";
+    	public static final String FW_ELIGIBLE2 = "FWELIGIBLE2";
     	public static final String FW_WOMCOUNTRY ="FWWOMCOUNTRY";
     	public static final String FW_WOMDIVISION ="FWWOMDIVISION";
     	public static final String FW_WOMDISTRICT ="FWWOMDISTRICT";
@@ -210,6 +211,7 @@ public class AllConstants {
     	public static final String FW_HR_PSR = "FWHR_PSR";
     	public static final String FW_FLAGVALUE = "FWFLAGVALUE";
     	public static final String FW_SORTVALUE = "FWSORTVALUE"; 
+    	public static final String FWNOTELIGIBLE = "FWNOTELIGIBLE";
     	
     }
     
@@ -833,3 +835,4 @@ public class AllConstants {
         public static final String WWW_AUTHENTICATE_HEADER = "www-authenticate";
     }
 }
+

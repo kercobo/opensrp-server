@@ -26,7 +26,7 @@ public class ELCORegisterService {
 	public ELCORegister getELCORegisterForProvider(String providerId)
 	{
 		ArrayList<ELCORegisterEntry> elcoRegisterEntries = new ArrayList<>();
-        List<Elco> elcos = allElcos.allOpenELCOsForProvider(providerId);
+        List<Elco> elcos = allElcos.allOpenELCOs();
         for (Elco ec : elcos) {
             ELCORegisterEntry ecRegisterEntry = new ELCORegisterEntry()
             		.withCASEID(ec.caseId())
@@ -62,6 +62,7 @@ public class ELCORegisterService {
             		.withFWGENDER(ec.FWGENDER())
             		.withFWWOMAGE(ec.FWWOMAGE())
             		.withFWELIGIBLE(ec.FWELIGIBLE())
+            		.withFWELIGIBLE2(ec.FWELIGIBLE2())
             		.withFWWOMCOUNTRY(ec.FWWOMCOUNTRY())
                     .withFWWOMDIVISION(ec.FWWOMDIVISION())
                     .withFWWOMDISTRICT(ec.FWWOMDISTRICT())

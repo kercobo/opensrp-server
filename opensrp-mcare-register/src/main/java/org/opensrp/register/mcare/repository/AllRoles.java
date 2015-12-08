@@ -28,7 +28,7 @@ public class AllRoles  extends MotechBaseRepository<Role>{
 		}
 		return roles.get(0);
 	}
-	@View(name = "all_user_with_role", map = "function(doc) { if (doc.type === 'Role') { emit(doc.userName); } }")
+	@View(name = "all_user_with_role", map = "function(doc) { if (doc.type === 'Role' && doc.status ==='Active') { emit(doc.userName); } }")
 	public List<Role> roles() {
 		return db.queryView(
 				createQuery("all_user_with_role")

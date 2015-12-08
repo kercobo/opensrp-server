@@ -37,6 +37,7 @@ public class AclService {
 				Acl acl = new Acl();
 				acl.withRoleName(aclDTO.getRoleName());
 				acl.withAccessTokens(aclDTO.getAccessTokens());
+				acl.withStatus(aclDTO.getStatus());
 				allAcls.add(acl);
 				return "1";
 			}catch(Exception e){
@@ -54,6 +55,7 @@ public class AclService {
 			acl.withRoleName(aclDTO.getRoleName());
 			acl.setId(aclDTO.getRoleId());
 			acl.setRevision(acls.getRevision());
+			acl.withStatus(aclDTO.getStatus());
 			acl.withAccessTokens(aclDTO.getAccessTokens());
 			allAcls.update(acl);
 			return "1";
@@ -66,14 +68,22 @@ public class AclService {
 	public AclDTO getRoleAndAccessTokens(String userName)
 	{
 		Role role = allRoles.findByUserName(userName);
-		Acl acl = allAcls.findByRoleName(role.getRoleName());
-		
-		AclDTO aclDTO = new AclDTO()
-						.withRoleName(acl.getRoleName())
-						.withRoleId(acl.getId())
-						.withAccessTokens(acl.getAccessTokens());
-		
-		return aclDTO;
+		if(role != null){
+			Acl acl = allAcls.findByRoleName(role.getRoleName());
+			if(acl != null){
+				AclDTO aclDTO = new AclDTO()
+				.withRoleName(acl.getRoleName())
+				.withRoleId(acl.getId())
+				.withStatus(acl.getStatus())
+				.withAccessTokens(acl.getAccessTokens());
+			return aclDTO;				
+			}else{
+				return null;
+			}
+			
+		}else{
+			return null;
+		}
 	}
 	public ArrayList<AclDTO> getRolesAndAccessTokens(){
 		List<Acl> acls = allAcls.roles();		//Acl ac = allAcls.get("");
@@ -82,6 +92,21 @@ public class AclService {
 			AclDTO aclDTO = new AclDTO()
 			.withRoleName(acl.getRoleName())
 			.withRoleId(acl.getId())
+			.withStatus(acl.getStatus())
+			.withAccessTokens(acl.getAccessTokens());			
+			aclList.add(aclDTO);			
+		}		
+		return aclList;
+	}
+	
+	public ArrayList<AclDTO> getActiveRolesAndAccessTokens(){
+		List<Acl> acls = allAcls.allActiveRoles();		//Acl ac = allAcls.get("");
+		ArrayList<AclDTO> aclList = new ArrayList<AclDTO>();
+		for (Acl acl : acls) {
+			AclDTO aclDTO = new AclDTO()
+			.withRoleName(acl.getRoleName())
+			.withRoleId(acl.getId())
+			.withStatus(acl.getStatus())
 			.withAccessTokens(acl.getAccessTokens());			
 			aclList.add(aclDTO);			
 		}		
@@ -92,6 +117,7 @@ public class AclService {
 		AclDTO aclDTO = new AclDTO()
 		 .withRoleName(acl.getRoleName())
 		 .withRoleId(acl.getId())
+		 .withStatus(acl.getStatus())
 		 .withAccessTokens(acl.getAccessTokens());
 		return aclDTO;
 	}

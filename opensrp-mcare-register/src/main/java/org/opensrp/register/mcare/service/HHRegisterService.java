@@ -26,7 +26,7 @@ public class HHRegisterService {
 	public HHRegister getHHRegisterForProvider(String providerId)
 	{
 		ArrayList<HHRegisterEntry> hhRegisterEntries = new ArrayList<>();
-        List<HouseHold> hhs = allHouseHolds.allOpenHHsForProvider(providerId);
+        List<HouseHold> hhs = allHouseHolds.findAllHouseHolds();
         
         for (HouseHold hh : hhs) {
         	HHRegisterEntry hhRegisterEntry = new HHRegisterEntry()

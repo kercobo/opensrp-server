@@ -1,7 +1,4 @@
-/**
- * @author julkar nain 
- */
-package org.opensrp.register.mcare.domain;
+package org.opensrp.register.mcare;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,65 +8,54 @@ import java.util.Map;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.codehaus.jackson.annotate.JsonProperty;
-import org.ektorp.support.TypeDiscriminator;
-import org.joda.time.LocalDate;
-import org.motechproject.model.MotechBaseDataObject;
 
-@TypeDiscriminator("doc.type === 'Mother'")
-public class Mother extends MotechBaseDataObject {
-	@JsonProperty
+public class ANCRegisterEntry {
+
 	private String caseId;
-	@JsonProperty
-	private String INSTANCEID;
-	@JsonProperty
-	private String PROVIDERID;
-	@JsonProperty
-	private String LOCATIONID;
-	@JsonProperty
-	private String GOBHHID;
-	@JsonProperty
-	private String JiVitAHHID;
-	@JsonProperty
-	private String FWWOMFNAME;
-	@JsonProperty
-	private String FWWOMNID;
-	@JsonProperty
-	private String FWWOMBID;
-	@JsonProperty
-	private String FWWOMAGE;
-	@JsonProperty
-	private String TODAY;
-	@JsonProperty
-	private String FWPSRLMP;
-	@JsonProperty
-	private String START;
-	@JsonProperty
-	private String END;
-	@JsonProperty
-	private String relationalid;
-	@JsonProperty
-    private String isClosed;
-	@JsonProperty
-	private Map<String, String> details;
-	@JsonProperty
-	private Map<String, String> ancVisitOne;
-	@JsonProperty
-	private Map<String, String> ancVisitTwo;
-	@JsonProperty
-	private Map<String, String> ancVisitThree;
-	@JsonProperty
-	private Map<String, String> ancVisitFour;
-	@JsonProperty
-	private List<Map<String, String>> bnfVisitDetails;
-	@JsonProperty
-	private Map<String, String> pncVisitOne;
-	@JsonProperty
-	private Map<String, String> pncVisitTwo;
-	@JsonProperty
-	private Map<String, String> pncVisitThree;
 	
-	public Mother() {
+	private String INSTANCEID;
+	
+	private String PROVIDERID;
+	
+	private String LOCATIONID;
+	
+	private String GOBHHID;
+	
+	private String JiVitAHHID;
+	
+	private String FWWOMFNAME;
+	
+	private String FWWOMNID;
+	
+	private String FWWOMBID;
+	
+	private String FWWOMAGE;
+	
+	private String TODAY;
+	
+	private String FWPSRLMP;
+	
+	private String START;
+	
+	private String END;
+	
+	private String relationalid;
+	
+    private String isClosed;
+	
+	private Map<String, String> details;
+	
+	private Map<String, String> ancVisitOne;
+	
+	private Map<String, String> ancVisitTwo;
+	
+	private Map<String, String> ancVisitThree;
+	
+	private Map<String, String> ancVisitFour;
+	
+	private List<Map<String, String>> bnfVisitDetails;
+	
+	public ANCRegisterEntry() {
 
 		this.details = new HashMap<>();
 		this.ancVisitOne = new HashMap<>();
@@ -79,80 +65,68 @@ public class Mother extends MotechBaseDataObject {
 		this.setIsClosed(false);
 	}
 	
-	public Mother withCaseId(String caseId) {
+	public ANCRegisterEntry withCaseId(String caseId) {
 		this.caseId = caseId;
 		return this;
 	}
 
-	public Mother withINSTANCEID(String INSTANCEID) {
+	public ANCRegisterEntry withINSTANCEID(String INSTANCEID) {
 		this.INSTANCEID = INSTANCEID;
 		return this;
 	}
 
-	public Mother withPROVIDERID(String PROVIDERID) {
+	public ANCRegisterEntry withPROVIDERID(String PROVIDERID) {
 		this.PROVIDERID = PROVIDERID;
 		return this;
 	}
 
-	public Mother withLOCATIONID(String LOCATIONID) {
+	public ANCRegisterEntry withLOCATIONID(String LOCATIONID) {
 		this.LOCATIONID = LOCATIONID;
 		return this;
 	}
 
-	public Mother withTODAY(String TODAY) {
+	public ANCRegisterEntry withTODAY(String TODAY) {
 		this.TODAY = TODAY;
 		return this;
 	}
 
-	public Mother withFWPSRLMP(String FWPSRLMP) {
+	public ANCRegisterEntry withFWPSRLMP(String FWPSRLMP) {
 		this.FWPSRLMP = FWPSRLMP;
 		return this;
 	}
 
-	public Mother withSTART(String START) {
+	public ANCRegisterEntry withSTART(String START) {
 		this.START = START;
 		return this;
 	}
 
-	public Mother withEND(String END) {
+	public ANCRegisterEntry withEND(String END) {
 		this.END = END;
 		return this;
 	}
-	public Mother withRelationalid(String relationalid) {
+	public ANCRegisterEntry withRelationalid(String relationalid) {
 		this.relationalid = relationalid;
 		return this;
 	}
 
-	public Mother withANCVisitOne(Map<String, String> ancVisitOne) {
+	public ANCRegisterEntry withANCVisitOne(Map<String, String> ancVisitOne) {
         this.ancVisitOne = new HashMap<>(ancVisitOne);
         return this;
     }
-	public Mother withANCVisitTwo(Map<String, String> ancVisitTwo) {
+	public ANCRegisterEntry withANCVisitTwo(Map<String, String> ancVisitTwo) {
         this.ancVisitTwo = new HashMap<>(ancVisitTwo);
         return this;
     }
-	public Mother withANCVisitThree(Map<String, String> ancVisitThree) {
+	public ANCRegisterEntry withANCVisitThree(Map<String, String> ancVisitThree) {
         this.ancVisitThree = new HashMap<>(ancVisitThree);
         return this;
     }
-	public Mother withANCVisitFour(Map<String, String> ancVisitFour) {
+	public ANCRegisterEntry withANCVisitFour(Map<String, String> ancVisitFour) {
         this.ancVisitFour = new HashMap<>(ancVisitFour);
         return this;
     }
-	public Mother withBNFVisitDetails(List<Map<String, String>> bnfVisitDetails) {
+	public ANCRegisterEntry withBNFVisitDetails(List<Map<String, String>> bnfVisitDetails) {
         this.bnfVisitDetails = bnfVisitDetails;
-        return this;
-    }
-	public Mother withPNCVisitOne(Map<String, String> pncVisitOne) {
-        this.pncVisitOne = new HashMap<>(pncVisitOne);
-        return this;
-    }
-	public Mother withPNCVisitTwo(Map<String, String> pncVisitTwo) {
-        this.pncVisitTwo = new HashMap<>(pncVisitTwo);
-        return this;
-    }
-	public Mother withPNCVisitThree(Map<String, String> pncVisitThree) {
-        this.pncVisitThree = new HashMap<>(pncVisitThree);
         return this;
     }
 
@@ -223,16 +197,7 @@ public class Mother extends MotechBaseDataObject {
 		}
 		return bnfVisitDetails;
 	}
-	public Map<String, String> pncVisitOne() {
-		return pncVisitOne;
-	}
-	public Map<String, String> pncVisitTwo() {
-		return pncVisitTwo;
-	}
-	public Map<String, String> pncVisitThree() {
-		return pncVisitThree;
-	}
-    public Mother setIsClosed(boolean isClosed) {
+    public ANCRegisterEntry setIsClosed(boolean isClosed) {
         this.isClosed = Boolean.toString(isClosed);
         return this;
     }
