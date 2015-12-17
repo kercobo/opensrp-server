@@ -98,7 +98,34 @@ public class Mother extends MotechBaseDataObject {
 		this.LOCATIONID = LOCATIONID;
 		return this;
 	}
-
+	public Mother withGOBHHID(String GOBHHID) {
+		this.GOBHHID = GOBHHID;
+		return this;
+	}
+	public Mother withJiVitAHHID(String JiVitAHHID) {
+		this.JiVitAHHID = JiVitAHHID;
+		return this;
+	}
+	public Mother withJFWWOMFNAME(String FWWOMFNAME) {
+		this.FWWOMFNAME = FWWOMFNAME;
+		return this;
+	}
+	public Mother withFWWOMNID(String FWWOMNID) {
+		this.FWWOMNID = FWWOMNID;
+		return this;
+	}
+	public Mother withFWWOMBID(String FWWOMBID) {
+		this.FWWOMBID = FWWOMBID;
+		return this;
+	}
+	public Mother withFWWOMAGE(String FWWOMAGE) {
+		this.FWWOMAGE = FWWOMAGE;
+		return this;
+	}
+	public Mother withIsClosed(String isClosed) {
+		this.isClosed = isClosed;
+		return this;
+	}
 	public Mother withTODAY(String TODAY) {
 		this.TODAY = TODAY;
 		return this;
@@ -171,7 +198,27 @@ public class Mother extends MotechBaseDataObject {
 	public String LOCATIONID() {
 		return LOCATIONID;
 	}
-	
+	public String GOBHHID() {
+		return GOBHHID;
+	}
+	public String JiVitAHHID() {
+		return JiVitAHHID;
+	}
+	public String FWWOMFNAME() {
+		return FWWOMFNAME;
+	}
+	public String FWWOMNID() {
+		return FWWOMNID;
+	}
+	public String FWWOMBID() {
+		return FWWOMBID;
+	}
+	public String FWWOMAGE() {
+		return FWWOMAGE;
+	}
+	public String isClosed() {
+		return isClosed;
+	}
 	public String TODAY() {
 		return TODAY;
 	}

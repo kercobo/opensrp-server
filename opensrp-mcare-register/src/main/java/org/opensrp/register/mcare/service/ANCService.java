@@ -63,7 +63,7 @@ public class ANCService {
 
 		mother.withPROVIDERID(submission.anmId());
 		mother.withINSTANCEID(submission.instanceId());
-		//mother.withTODAY(submission.getField(MOTHER_REFERENCE_DATE));
+		mother.withTODAY(submission.getField(MOTHER_REFERENCE_DATE));
 		allMothers.update(mother);
 
 		ancSchedulesService.enrollMother(motherId,
@@ -204,6 +204,7 @@ public class ANCService {
 	{
 		
 	}
+	
 	public void ancClose(String entityId) {
 		
 		Mother mother = allMothers.findByCaseId(entityId);

@@ -180,7 +180,7 @@ public class EncounterTest extends TestResourceLoader{
 	}	
 	/*
 	@SuppressWarnings("unchecked")
-	@Ignore @Test
+	@Test
 	public void shouldGetDataSpecifiedInGroupInsideSubform() throws IOException, ParseException, JSONException{
 		FormSubmission fs = getFormSubmissionFor("new_household_registration_with_grouped_subform_data", 1);
 

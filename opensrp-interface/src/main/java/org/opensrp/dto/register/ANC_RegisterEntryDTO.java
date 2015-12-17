@@ -80,12 +80,42 @@ public class ANC_RegisterEntryDTO {
 		this.PROVIDERID = PROVIDERID;
 		return this;
 	}
-
+	
 	public ANC_RegisterEntryDTO withLOCATIONID(String LOCATIONID) {
 		this.LOCATIONID = LOCATIONID;
 		return this;
 	}
+	public ANC_RegisterEntryDTO withGOBHHID(String GOBHHID) {
+		this.GOBHHID = GOBHHID;
+		return this;
+	}	
+	public ANC_RegisterEntryDTO withJiVitAHHID(String JiVitAHHID) {
+		this.JiVitAHHID = JiVitAHHID;
+		return this;
+	}
+	public ANC_RegisterEntryDTO withFWWOMFNAME(String FWWOMFNAME) {
+		this.FWWOMFNAME = FWWOMFNAME;
+		return this;
+	}
+	
+	public ANC_RegisterEntryDTO withFWWOMNID(String FWWOMNID) {
+		this.FWWOMNID = FWWOMNID;
+		return this;
+	}
 
+	public ANC_RegisterEntryDTO withFWWOMBID(String FWWOMBID) {
+		this.FWWOMBID = FWWOMBID;
+		return this;
+	}
+	public ANC_RegisterEntryDTO withFWWOMAGE(String FWWOMAGE) {
+		this.FWWOMAGE = FWWOMAGE;
+		return this;
+	}
+	public ANC_RegisterEntryDTO withIsClosed(String isClosed) {
+		this.isClosed = isClosed;
+		return this;
+	}
+	
 	public ANC_RegisterEntryDTO withTODAY(String TODAY) {
 		this.TODAY = TODAY;
 		return this;

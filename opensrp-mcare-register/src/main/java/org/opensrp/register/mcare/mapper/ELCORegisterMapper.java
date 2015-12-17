@@ -58,6 +58,7 @@ public class ELCORegisterMapper {
                         		.withFWGENDER(entry.FWGENDER())
                         		.withFWWOMAGE(entry.FWWOMAGE())
                         		.withFWELIGIBLE(entry.FWELIGIBLE())
+                        		.withFWELIGIBLE2(entry.FWELIGIBLE2())
                         		.withFWWOMCOUNTRY(entry.FWWOMCOUNTRY())
                         		.withFWWOMDIVISION(entry.FWWOMDIVISION())
                         		.withFWWOMDISTRICT(entry.FWWOMDISTRICT())

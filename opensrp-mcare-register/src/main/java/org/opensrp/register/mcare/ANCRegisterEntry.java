@@ -74,6 +74,35 @@ public class ANCRegisterEntry {
 		this.INSTANCEID = INSTANCEID;
 		return this;
 	}
+	public ANCRegisterEntry withGOBHHID(String GOBHHID) {
+		this.GOBHHID = GOBHHID;
+		return this;
+	}
+	
+	public ANCRegisterEntry withJiVitAHHID(String JiVitAHHID) {
+		this.JiVitAHHID = JiVitAHHID;
+		return this;
+	}
+	public ANCRegisterEntry withFWWOMFNAME(String FWWOMFNAME) {
+		this.FWWOMFNAME = FWWOMFNAME;
+		return this;
+	}
+	public ANCRegisterEntry withFWWOMNID(String FWWOMNID) {
+		this.FWWOMNID = FWWOMNID;
+		return this;
+	}
+	public ANCRegisterEntry withFWWOMBID(String FWWOMBID) {
+		this.FWWOMBID = FWWOMBID;
+		return this;
+	}
+	public ANCRegisterEntry withFWWOMAGE(String FWWOMAGE) {
+		this.FWWOMAGE = FWWOMAGE;
+		return this;
+	}
+	public ANCRegisterEntry withIsClosed(String isClosed) {
+		this.isClosed = isClosed;
+		return this;
+	}
 
 	public ANCRegisterEntry withPROVIDERID(String PROVIDERID) {
 		this.PROVIDERID = PROVIDERID;
@@ -144,6 +173,28 @@ public class ANCRegisterEntry {
 
 	public String LOCATIONID() {
 		return LOCATIONID;
+	}
+	
+	public String GOBHHID() {
+		return GOBHHID;
+	}
+	public String JiVitAHHID() {
+		return JiVitAHHID;
+	}
+	public String FWWOMFNAME() {
+		return FWWOMFNAME;
+	}
+	public String FWWOMNID() {
+		return FWWOMNID;
+	}
+	public String FWWOMBID() {
+		return FWWOMBID;
+	}
+	public String FWWOMAGE() {
+		return FWWOMAGE;
+	}
+	public String isClosed() {
+		return isClosed;
 	}
 	
 	public String TODAY() {

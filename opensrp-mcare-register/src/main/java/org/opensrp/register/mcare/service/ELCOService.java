@@ -148,8 +148,7 @@ public class ELCOService {
 			
 			houseHold.ELCODETAILS().add(elco);
 
-		}
-		
+		}	
 	}
 	
 	public void addPSRFDetailsToELCO(FormSubmission submission) {
@@ -162,9 +161,7 @@ public class ELCOService {
 						submission.entityId()));
 				return;
 			}
-		 
-		    
-		   
+		 	    		   
 			Map<String, String> psrf = create(FW_PSRDATE, submission.getField(FW_PSRDATE))
 					.put(FW_CONFIRMATION, submission.getField(FW_CONFIRMATION))
 					.put(FW_PSRSTS, submission.getField(FW_PSRSTS))
