@@ -65,18 +65,20 @@ public class OpenmrsUserService extends OpenmrsService{
 		return u;
 	}
 	public List<String> getAllUsers() throws JSONException {
-		HttpResponse op = HttpUtil.get(HttpUtil.removeEndingSlash(OPENMRS_BASE_URL)+"/"+USER_URL, "", OPENMRS_USER, OPENMRS_PWD);
-		JSONArray res = new JSONObject(op.body()).getJSONArray("results");
-		if(res.length() == 0){
-			return null;
-		}
 		List<String> users = new ArrayList<>();
-		
-		for(int i=0; i<res.length();i++)
-		{
-			users.add(res.getJSONObject(i).getString("display"));
+		int index = 0;
+		for(;;){
+			HttpResponse op = HttpUtil.get(HttpUtil.removeEndingSlash(OPENMRS_BASE_URL)+"/"+USER_URL, "startIndex="+index+"", OPENMRS_USER, OPENMRS_PWD);
+			JSONArray res = new JSONObject(op.body()).getJSONArray("results");
+			for(int i=0; i<res.length();i++)
+			{
+				users.add(res.getJSONObject(i).getString("display"));
+			}
+			if(res.length() <50){
+				return users;
+			}
+			index = index+50;
 		}
-		return users;
 	}
 	public JSONObject getPersonByUser(String username) throws JSONException {
 		HttpResponse op = HttpUtil.get(HttpUtil.removeEndingSlash(OPENMRS_BASE_URL)+"/"+USER_URL, "v=full&username="+username, OPENMRS_USER, OPENMRS_PWD);
