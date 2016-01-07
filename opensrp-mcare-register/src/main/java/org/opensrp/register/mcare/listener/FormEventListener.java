@@ -52,6 +52,11 @@ public class FormEventListener {
     }
 
     @MotechListener(subjects = OpenSRPScheduleConstants.FORM_SCHEDULE_SUBJECT)
+    public void postDataToOpenMRS()
+    {
+    	
+    }
+    @MotechListener(subjects = OpenSRPScheduleConstants.FORM_SCHEDULE_SUBJECT)
     public void fetchForms(MotechEvent event) {
         if (!lock.tryLock()) {
             logger.warn("Not fetching forms from Message Queue. It is already in progress.");
