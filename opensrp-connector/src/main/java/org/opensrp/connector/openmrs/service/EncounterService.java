@@ -53,15 +53,20 @@ public class EncounterService extends OpenmrsService{
 	public JSONObject createEncounter(Event e) throws JSONException{
 		JSONObject pt = patientService.getPatientByIdentifier(e.getBaseEntityId());
 		JSONObject enc = new JSONObject();
-		
 		JSONObject pr = userService.getPersonByUser(e.getProviderId());
 		
 		enc.put("encounterDatetime", OPENMRS_DATE.format(e.getEventDate()));
 		// patient must be existing in OpenMRS before it submits an encounter. if it doesnot it would throw NPE
-		enc.put("patient", pt.getString("uuid"));
+		if (pr.getString("uuid").isEmpty() || pr.getString("uuid")==null)
+			System.out.println("Person or Patient does not exist or empty inside openmrs with identifier: " + pr.getString("uuid"));
+		else 
+			enc.put("patient", pt.getString("uuid"));
 		enc.put("encounterType", e.getEventType());
 		enc.put("location", e.getLocationId());
-		enc.put("provider", pr.getString("uuid"));
+		if (pr.getString("uuid").isEmpty() || pr.getString("uuid")==null)
+			System.out.println("Person or Patient does not exist or empty inside openmrs with identifier: " + pr.getString("uuid"));
+		else 
+			enc.put("provider", pr.getString("uuid"));
 
 		List<Obs> ol = e.getObs();
 		Map<String, JSONObject> p = new HashMap<>();
@@ -100,7 +105,7 @@ public class EncounterService extends OpenmrsService{
 			obar.put(obo);
 		}
 		enc.put("obs", obar);
-		
+		System.out.println("Going to create Encounter: " + enc.toString());
 		HttpResponse op = HttpUtil.post(HttpUtil.removeEndingSlash(OPENMRS_BASE_URL)+"/"+ENCOUNTER_URL, "", enc.toString(), OPENMRS_USER, OPENMRS_PWD);
 		return new JSONObject(op.body());
 	}

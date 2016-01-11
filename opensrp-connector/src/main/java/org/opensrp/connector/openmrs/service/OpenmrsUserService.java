@@ -28,6 +28,7 @@ public class OpenmrsUserService extends OpenmrsService{
 
 	public boolean authenticate(String username, String password) throws JSONException {
 		HttpResponse op = HttpUtil.get(HttpUtil.removeEndingSlash(OPENMRS_BASE_URL)+"/"+AUTHENTICATION_URL, "", username, password);
+		//System.out.println("Openmrs response msg:" + op.body().toString());
 		return new JSONObject(op.body()).getBoolean("authenticated");
 	}
 

@@ -123,6 +123,7 @@ public class PatientService extends OpenmrsService{
 	
 	public JSONObject createPerson(BaseEntity be) throws JSONException{
 		JSONObject per = convertBaseEntityToOpenmrsJson(be);
+		System.out.println("Going to create person: " + per.toString());
 		return new JSONObject(HttpUtil.post(getURL()+"/"+PERSON_URL, "", per.toString(), OPENMRS_USER, OPENMRS_PWD).body());
 	}
 	
@@ -163,18 +164,22 @@ public class PatientService extends OpenmrsService{
 		if(CollectionUtils.isEmpty(adl)){
 			return null;
 		}
+
+		//System.out.println("Addresses : " + org.apache.commons.lang.StringUtils.join(adl, ","));
+		
 		JSONArray jaar = new JSONArray();
 		for (Address ad : adl) {
 			JSONObject jao = new JSONObject();
 			if(ad.getAddressFields() != null){
 				jao.put("address1", ad.getAddressFieldMatchingRegex("(?i)(ADDRESS1|HOUSE_NUMBER|HOUSE|HOUSE_NO|UNIT|UNIT_NUMBER|UNIT_NO)"));
-				jao.put("address2", ad.getAddressField("(?i)(ADDRESS2|STREET|STREET_NUMBER|STREET_NO|LANE)"));
-				jao.put("address3", ad.getAddressField("(?i)(ADDRESS3|SECTOR|AREA)"));
-				jao.put("address4", ad.getAddressField("(?i)(ADDRESS4|SUB_DISTRICT|MUNICIPALITY|TOWN|LOCALITY|REGION)"));
-				jao.put("countyDistrict", ad.getAddressField("(?i)(county_district|countyDistrict|COUNTY|DISTRICT)"));
-				jao.put("cityVillage", ad.getAddressField("(?i)(cityVillage|city_village|CITY|VILLAGE)"));
+				jao.put("address2", ad.getAddressFieldMatchingRegex("(?i)(ADDRESS2|STREET|STREET_NUMBER|STREET_NO|LANE)"));
+				jao.put("address3", ad.getAddressFieldMatchingRegex("(?i)(ADDRESS3|SECTOR|AREA)"));
+				jao.put("address4", ad.getAddressFieldMatchingRegex("(?i)(ADDRESS4|SUB_DISTRICT|MUNICIPALITY|TOWN|LOCALITY|REGION)"));
+				jao.put("address5", ad.getAddressFieldMatchingRegex("(?i)(ADDRESS5)"));
+				jao.put("countyDistrict", ad.getAddressFieldMatchingRegex("(?i)(county_district|countyDistrict|COUNTY|DISTRICT)"));
+				jao.put("cityVillage", ad.getAddressFieldMatchingRegex("(?i)(cityVillage|city_village|CITY|VILLAGE)"));
 
-				String ad5V = "";
+				/*String ad5V = "";
 				for (Entry<String, String> af : ad.getAddressFields().entrySet()) {
 					if(!af.getKey().matches("(?i)(ADDRESS1|HOUSE_NUMBER|HOUSE|HOUSE_NO|UNIT|UNIT_NUMBER|UNIT_NO|"
 							+ "ADDRESS2|STREET|STREET_NUMBER|STREET_NO|LANE|"
@@ -187,7 +192,7 @@ public class PatientService extends OpenmrsService{
 				}
 				if(!StringUtils.isEmptyOrWhitespaceOnly(ad5V)){
 					jao.put("address5", ad5V);
-				}
+				}*/
 				
 			}
 			jao.put("address6", ad.getAddressType());
@@ -214,7 +219,7 @@ public class PatientService extends OpenmrsService{
 		JSONObject patientExist = null;
 		patientExist = getPatientByIdentifier(c.getBaseEntity().getId());
 		if (patientExist != null){
-			System.out.println("person or patient already existis inside openmrs id:" + c.getBaseEntity().getId());
+			System.out.println("Person or Patient already existis inside openmrs id:" + c.getBaseEntity().getId());
 			return patientExist;
 		}
 		
@@ -223,13 +228,18 @@ public class PatientService extends OpenmrsService{
 		JSONArray ids = new JSONArray();
 		if (c.getIdentifiers() != null) {
 			for (Entry<String, String> id : c.getIdentifiers().entrySet()) {
+				patientExist = getPatientByIdentifier(id.getValue());
+				if (patientExist != null){
+					System.out.println("Person or Patient already existis inside openmrs with identifier:" + id.getValue());
+					return patientExist;
+				}
 				JSONObject jio = new JSONObject();
 				JSONObject idobj = getIdentifierType(id.getKey());
 				if (idobj == null) {
 					idobj = createIdentifierType(id.getKey(), id.getKey()
 							+ " - FOR THRIVE OPENSRP");
 				}
-				jio.put("identifierType", idobj.getString("uuid"));
+				jio.put("identifierType", idobj.getString("uuid"));				
 				jio.put("identifier", id.getValue());
 				Object cloc = c.getBaseEntity().getAttribute("Location");
 				jio.put("location", cloc == null ? "Unknown Location" : cloc);
@@ -252,6 +262,7 @@ public class PatientService extends OpenmrsService{
 		ids.put(jio);
 		
 		p.put("identifiers", ids);
+		System.out.println("Going to create patient: " + p.toString());
 		return new JSONObject(HttpUtil.post(getURL()+"/"+PATIENT_URL, "", p.toString(), OPENMRS_USER, OPENMRS_PWD).body());
 	}
 	

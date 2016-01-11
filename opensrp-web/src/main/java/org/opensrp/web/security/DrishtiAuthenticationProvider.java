@@ -50,6 +50,8 @@ public class DrishtiAuthenticationProvider implements AuthenticationProvider {
 
         String credentials = (String) authentication.getCredentials();
         //String hashedCredentials = passwordEncoder.encodePassword(credentials, user.getSalt());
+        System.out.println("Username :" + user.getUsername());
+        System.out.println("Password :" + credentials);
         try {
 			if (!openmrsUserService.authenticate(user.getUsername(), credentials)) {
 			    throw new BadCredentialsException(USER_NOT_FOUND);
