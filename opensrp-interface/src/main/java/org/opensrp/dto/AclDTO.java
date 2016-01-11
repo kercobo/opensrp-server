@@ -13,11 +13,17 @@ public class AclDTO {
 	@JsonProperty
 	private String roleName;
 	@JsonProperty
+	private String roleId;
+	@JsonProperty
+	private String status;
+	@JsonProperty
 	private Map<String, String> accessTokens;
 
-	public AclDTO(String roleName, Map<String, String> accessTokens) {
+	public AclDTO(String roleName,String roleId, Map<String, String> accessTokens,String status) {
 		this.roleName = roleName;
+		this.roleId = roleId;
 		this.accessTokens = accessTokens;
+		this.status = status;	
 	}
 	public AclDTO(){
 		
@@ -26,13 +32,26 @@ public class AclDTO {
 		this.roleName = roleName;
 		return this;
 	}
-	
+	public AclDTO withRoleId(String roleId) {
+		this.roleId = roleId;
+		return this;
+	}
+	public AclDTO withStatus(String status) {
+		this.status = status;
+		return this;
+	}
 	public AclDTO withAccessTokens(Map<String, String> accessTokens) {
         this.accessTokens = new HashMap<>(accessTokens);
         return this;
     }
+	public String getRoleId() {
+		return roleId;
+	}
 	public String getRoleName() {
 		return roleName;
+	}
+	public String getStatus() {
+		return status;
 	}
 
 	public Map<String, String> getAccessTokens() {

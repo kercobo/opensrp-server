@@ -50,6 +50,8 @@ public class HHRegisterEntryDTO {
 	@JsonProperty
 	private String FWNHHHGPS;
 	@JsonProperty
+	private String form_name;
+	@JsonProperty
 	private String FWHOHFNAME;
 	@JsonProperty
 	private String FWHOHLNAME;
@@ -129,6 +131,11 @@ public class HHRegisterEntryDTO {
 
 	public HHRegisterEntryDTO withFWNHHHGPS(String FWNHHHGPS) {
 		this.FWNHHHGPS = FWNHHHGPS;
+		return this;
+	}
+	
+	public HHRegisterEntryDTO withform_name(String form_name) {
+		this.form_name = form_name;
 		return this;
 	}
     

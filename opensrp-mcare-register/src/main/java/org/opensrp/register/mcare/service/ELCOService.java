@@ -38,14 +38,18 @@ public class ELCOService {
 	private AllElcos allEcos;
 	private HHSchedulesService hhSchedulesService;
 	private ELCOScheduleService elcoScheduleService;
+	private ANCService ancService;
+	private BNFService bnfService;
 
 	@Autowired
 	public ELCOService(AllHouseHolds allHouseHolds, AllElcos allEcos, HHSchedulesService hhSchedulesService,
-			ELCOScheduleService elcoScheduleService) {
+			ELCOScheduleService elcoScheduleService,ANCService ancService, BNFService bnfService) {
 		this.allHouseHolds = allHouseHolds;
 		this.allEcos = allEcos;
 		this.hhSchedulesService = hhSchedulesService;
 		this.elcoScheduleService = elcoScheduleService;
+		this.ancService = ancService;
+		this.bnfService = bnfService;
 	}
 
 	public void registerELCO(FormSubmission submission) {
@@ -68,7 +72,7 @@ public class ELCOService {
 
 		if (submission.formName().equalsIgnoreCase(ELCO_REGISTRATION)) {
 
-			HouseHold houseHold = allHouseHolds.findByCASEID(submission
+			HouseHold houseHold = allHouseHolds.findByCaseId(submission
 					.entityId());
 
 			if (houseHold == null) {
@@ -97,13 +101,22 @@ public class ELCOService {
 		for (Map<String, String> elcoFields : subFormData.instances()) {
 
 			Map<String, String> elco = create(ID, elcoFields.get(ID))
-					.put(FW_PROVIDERID, elcoFields.get(FW_PROVIDERID))
-					.put(FW_LOCATIONID, elcoFields.get(FW_LOCATIONID))
-					.put(FW_TODAY, elcoFields.get(FW_TODAY))
-					.put(START_DATE, elcoFields.get(START_DATE))
-					.put(END_DATE, elcoFields.get(END_DATE))
+					.put(FW_TODAY, submission.getField(REFERENCE_DATE))
+					.put(START_DATE, submission.getField(START_DATE))
+					.put(END_DATE, submission.getField(END_DATE))
 					.put(FW_GOBHHID, elcoFields.get(FW_GOBHHID))
 					.put(FW_JiVitAHHID, elcoFields.get(FW_JiVitAHHID))
+					.put(FW_CENDATE, submission.getField(FW_CENDATE))
+					.put(FW_CENSTAT, submission.getField(FW_CENSTAT))
+					.put(existing_ELCO, submission.getField(existing_ELCO))
+					.put(new_ELCO, submission.getField(new_ELCO))
+					.put(ELCO, submission.getField(ELCO))
+					.put(WomanREGDATE, elcoFields.get(WomanREGDATE))
+					.put(FW_NHWOMSTRMEN, elcoFields.get(FW_NHWOMSTRMEN))
+					.put(FW_NHWOMHUSALV, elcoFields.get(FW_NHWOMHUSALV))
+					.put(FW_NHWOMHUSSTR, elcoFields.get(FW_NHWOMHUSSTR))
+					.put(FW_NHWOMHUSLIV, elcoFields.get(FW_NHWOMHUSLIV))
+					.put(form_name, submission.getField(form_name))
 					.put(FW_WOMFNAME, elcoFields.get(FW_WOMFNAME))
 					.put(FW_WOMLNAME, elcoFields.get(FW_WOMLNAME))
 					.put(FW_WOMANYID, elcoFields.get(FW_WOMANYID))
@@ -120,7 +133,8 @@ public class ELCOService {
 					.put(FW_NHWOMHUSALV, elcoFields.get(FW_NHWOMHUSALV))
 					.put(FW_NHWOMHUSSTR, elcoFields.get(FW_NHWOMHUSSTR))
 					.put(FW_NHWOMHUSLIV, elcoFields.get(FW_NHWOMHUSLIV))
-					.put(FW_ELIGIBLE, elcoFields.get(FW_ELIGIBLE))			
+					.put(FW_ELIGIBLE, elcoFields.get(FW_ELIGIBLE))
+					.put(FW_ELIGIBLE2, elcoFields.get(FW_ELIGIBLE2))
 					.put(FW_WOMCOUNTRY, elcoFields.get(FW_WOMCOUNTRY))
 					.put(FW_WOMDIVISION, elcoFields.get(FW_WOMDIVISION))
 					.put(FW_WOMDISTRICT, elcoFields.get(FW_WOMDISTRICT))
@@ -134,8 +148,7 @@ public class ELCOService {
 			
 			houseHold.ELCODETAILS().add(elco);
 
-		}
-		
+		}	
 	}
 	
 	public void addPSRFDetailsToELCO(FormSubmission submission) {
@@ -148,9 +161,7 @@ public class ELCOService {
 						submission.entityId()));
 				return;
 			}
-		 
-		    
-		   
+		 	    		   
 			Map<String, String> psrf = create(FW_PSRDATE, submission.getField(FW_PSRDATE))
 					.put(FW_CONFIRMATION, submission.getField(FW_CONFIRMATION))
 					.put(FW_PSRSTS, submission.getField(FW_PSRSTS))
@@ -177,7 +188,20 @@ public class ELCOService {
 					.put(FW_PSRHGT, submission.getField(FW_PSRHGT))
 					.put(FW_PSRMUAC, submission.getField(FW_PSRMUAC))
 					.put(FW_PSRPHONE, submission.getField(FW_PSRPHONE))
-					.put(FW_PSRPHONENUM, submission.getField(FW_PSRPHONENUM)).map();
+					.put(FW_PSRPHONENUM, submission.getField(FW_PSRPHONENUM))
+					.put(FW_VG, submission.getField(FW_VG))
+					.put(FW_HRP, submission.getField(FW_HRP))
+					.put(FW_HR_PSR, submission.getField(FW_HR_PSR))
+					.put(FW_FLAGVALUE, submission.getField(FW_FLAGVALUE))
+					.put(FW_SORTVALUE, submission.getField(FW_SORTVALUE))
+					.put(START_DATE, submission.getField(START_DATE))
+					.put(END_DATE, submission.getField(END_DATE))
+					.put(REFERENCE_DATE, submission.getField(REFERENCE_DATE))
+					.put(existing_ELCO, submission.getField(existing_ELCO))
+					.put(FWNOTELIGIBLE, submission.getField(FWNOTELIGIBLE))
+					.put(ELCO, submission.getField(ELCO))
+					.put(FW_ELIGIBLE, submission.getField(FW_ELIGIBLE))
+					.map();
 			
 			elco.PSRFDETAILS().add(psrf);	
 			
@@ -187,5 +211,13 @@ public class ELCOService {
 			
 			elcoScheduleService.enrollIntoMilestoneOfPSRF(submission.entityId(),
 					submission.getField(REFERENCE_DATE));
+			
+			if(submission.getField(FW_PSRPREGSTS).equals("1"))
+			{
+				ancService.registerANC(submission);
+				bnfService.registerBNF(submission);
+			}
+		
 	}
 }
+

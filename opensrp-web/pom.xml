@@ -39,6 +39,10 @@
                 <targetPath>form</targetPath>
             </resource>
             <resource>
+                <directory>../assets/multimedia</directory>
+                <targetPath>multimedia</targetPath>
+            </resource>
+            <resource>
                 <directory>../build</directory>
                 <filtering>true</filtering>
                 <includes>

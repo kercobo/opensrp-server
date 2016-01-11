@@ -21,7 +21,7 @@ public class HouseHoldReporter implements IReporter {
 	@Override
 	public void report(String entityId, String reportIndicator,
 			Location location, String serviceProvidedDate, SafeMap reportData) {
-		HouseHold houseHold = allHouseHolds.findByCASEID(entityId);
+		HouseHold houseHold = allHouseHolds.findByCaseId(entityId);
 
 	}
 

@@ -41,24 +41,22 @@ public class ANCSchedulesService {
 	}
 
     public void enrollMother(String caseId, LocalDate referenceDateForSchedule) {
-        for (String schedule : NON_ANC_SCHEDULES) {
+        /*for (String schedule : NON_ANC_SCHEDULES) {
         	scheduler.enrollIntoSchedule(caseId, schedule, referenceDateForSchedule);
-        }
+        }*/
         enrollIntoCorrectMilestoneOfANCCare(caseId, referenceDateForSchedule);
     }
     private void enrollIntoCorrectMilestoneOfANCCare(String entityId, LocalDate referenceDateForSchedule) {
         String milestone=null;
 
-        if (DateUtil.isDateWithinGivenPeriodBeforeToday(referenceDateForSchedule, Weeks.weeks(8).toPeriod().minusDays(5))) {
+        if (DateUtil.isDateWithinGivenPeriodBeforeToday(referenceDateForSchedule, Weeks.weeks(8).toPeriod().minusDays(0))) {
             milestone = SCHEDULE_ANC_1;
-        } else if (DateUtil.isDateWithinGivenPeriodBeforeToday(referenceDateForSchedule, Weeks.weeks(24).toPeriod().minusDays(5))) {
+        } else if (DateUtil.isDateWithinGivenPeriodBeforeToday(referenceDateForSchedule, Weeks.weeks(24).toPeriod().minusDays(0))) {
             milestone = SCHEDULE_ANC_2;
-        } else if (DateUtil.isDateWithinGivenPeriodBeforeToday(referenceDateForSchedule, Weeks.weeks(32).toPeriod().minusDays(5))) {
+        } else if (DateUtil.isDateWithinGivenPeriodBeforeToday(referenceDateForSchedule, Weeks.weeks(32).toPeriod().minusDays(0))) {
             milestone = SCHEDULE_ANC_3;
-        } else if(DateUtil.isDateWithinGivenPeriodBeforeToday(referenceDateForSchedule, Weeks.weeks(36).toPeriod().minusDays(5))) {
+        } else if(DateUtil.isDateWithinGivenPeriodBeforeToday(referenceDateForSchedule, Weeks.weeks(36).toPeriod().minusDays(0))) {
             milestone = SCHEDULE_ANC_4;
-        } else if(DateUtil.isDateWithinGivenPeriodBeforeToday(referenceDateForSchedule, Weeks.weeks(37).toPeriod().plusDays(2))) {
-        	milestone = SCHEDULE_BNF;
         } else{
         	
         }

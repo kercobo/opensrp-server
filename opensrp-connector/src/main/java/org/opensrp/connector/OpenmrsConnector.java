@@ -357,6 +357,10 @@ public class OpenmrsConnector {
 	 */
 	public Map<String, Map<String, Object>> getDependentClientsFromFormSubmission(FormSubmission fs) throws ParseException {
 		Map<String, Map<String, Object>> map = new HashMap<>();
+		if (fs.subForms() == null || fs.subForms().isEmpty()){
+			System.out.println("subform does not exists inside this form" + fs.formName());
+			return map;
+		}
 		for (SubFormData sbf : fs.subForms()) {
 			Map<String, String> att = formAttributeMapper.getAttributesForSubform(sbf.name(), fs);
 			if(att.size() > 0 && att.get("openmrs_entity").equalsIgnoreCase("person")){

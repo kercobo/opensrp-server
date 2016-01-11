@@ -5,11 +5,8 @@ import java.util.List;
 import org.ektorp.CouchDbConnector;
 import org.ektorp.support.GenerateView;
 import org.ektorp.support.View;
-import org.joda.time.DateTime;
-import org.joda.time.LocalDate;
 import org.motechproject.dao.MotechBaseRepository;
 import org.opensrp.common.AllConstants;
-import org.opensrp.register.mcare.domain.HouseHold;
 import org.opensrp.register.mcare.domain.Mother;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,6 +38,20 @@ public class AllMothers extends MotechBaseRepository<Mother> {
 		Mother mother = findByCaseId(caseId);
 		update(mother.setIsClosed(true));
 	}
+	
+	@View(name = "all_open_mothers_for_provider", map = "function(doc) { if (doc.type === 'Mother' && doc.PROVIDERID) { emit(doc.PROVIDERID); } }")
+	public List<Mother> allOpenMothersForProvider(String providerId) {
+		return db.queryView(
+				createQuery("all_open_mothers_for_provider").key(providerId)
+						.includeDocs(true), Mother.class);
+	}
+	@View(name = "all_open_mothers_for_provider", map = "function(doc) { if (doc.type === 'Mother' && doc.PROVIDERID) { emit(doc.PROVIDERID); } }")
+	public List<Mother> allOpenMothers() {
+		return db.queryView(
+				createQuery("all_open_mothers_for_provider")
+						.includeDocs(true), Mother.class);
+	}
+	
 	/*
 	 * @View(name = "all_households", map =
 	 * "function(doc) { if (doc.type === 'HouseHold') { emit(doc.PROVIDERID, doc.CASEID); } }"

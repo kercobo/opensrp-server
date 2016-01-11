@@ -26,9 +26,25 @@ public class ELCORegisterEntryDTO {
 	@JsonProperty
 	private String END;
 	@JsonProperty
+	private String WomanREGDATE;
+	@JsonProperty
+	private String FWNHWOMSTRMEN;
+	@JsonProperty
+	private String FWNHWOMHUSALV;
+	@JsonProperty
+	private String FWNHWOMHUSLIV;
+	@JsonProperty
+	private String FWNHWOMHUSSTR;
+	@JsonProperty
 	private String GOBHHID;
 	@JsonProperty
 	private String JiVitAHHID;
+	@JsonProperty
+	private String existing_ELCO;
+	@JsonProperty
+	private String new_ELCO;
+	@JsonProperty
+	private String ELCO;
 	@JsonProperty
 	private String FWCENDATE;
 	@JsonProperty
@@ -72,6 +88,8 @@ public class ELCORegisterEntryDTO {
 	@JsonProperty
 	private String FWELIGIBLE;
 	@JsonProperty
+	private String FWELIGIBLE2;
+	@JsonProperty
 	private String FWWOMCOUNTRY;
 	@JsonProperty
 	private String FWWOMDIVISION;
@@ -91,6 +109,8 @@ public class ELCORegisterEntryDTO {
 	private String FWWOMGOBHHID;
 	@JsonProperty
 	private String FWWOMGPS;
+	@JsonProperty
+	private String form_name;
 	@JsonProperty
 	private Map<String, String> details;
 	
@@ -129,16 +149,46 @@ public class ELCORegisterEntryDTO {
 		this.END = END;
 		return this;
 	}
+	public ELCORegisterEntryDTO withWomanREGDATE(String WomanREGDATE) {
+		this.WomanREGDATE = WomanREGDATE;
+		return this;
+	}
+	public ELCORegisterEntryDTO withFWNHWOMSTRMEN(String FWNHWOMSTRMEN) {
+		this.FWNHWOMSTRMEN = FWNHWOMSTRMEN;
+		return this;
+	}
+	public ELCORegisterEntryDTO withFWNHWOMHUSALV(String FWNHWOMHUSALV) {
+		this.FWNHWOMHUSALV = FWNHWOMHUSALV;
+		return this;
+	}
+	public ELCORegisterEntryDTO withFWNHWOMHUSLIV(String FWNHWOMHUSLIV) {
+		this.FWNHWOMHUSLIV = FWNHWOMHUSLIV;
+		return this;
+	}
+	public ELCORegisterEntryDTO withFWNHWOMHUSSTR(String FWNHWOMHUSSTR) {
+		this.FWNHWOMHUSSTR = FWNHWOMHUSSTR;
+		return this;
+	}
 	public ELCORegisterEntryDTO withGOBHHID(String GOBHHID) {
 		this.GOBHHID = GOBHHID;
 		return this;
 	}
-
 	public ELCORegisterEntryDTO withJiVitAHHID(String JiVitAHHID) {
 		this.JiVitAHHID = JiVitAHHID;
 		return this;
 	}
-
+	public ELCORegisterEntryDTO withexisting_ELCO(String existing_ELCO) {
+		this.existing_ELCO = existing_ELCO;
+		return this;
+	}
+	public ELCORegisterEntryDTO withnew_ELCO(String new_ELCO) {
+		this.new_ELCO = new_ELCO;
+		return this;
+	}
+	public ELCORegisterEntryDTO withELCO(String ELCO) {
+		this.ELCO = ELCO;
+		return this;
+	}
 	public ELCORegisterEntryDTO withFWCENDATE(String FWCENDATE) {
 		this.FWCENDATE = FWCENDATE;
 		return this;
@@ -224,6 +274,10 @@ public class ELCORegisterEntryDTO {
 		this.FWELIGIBLE = FWELIGIBLE;
 		return this;
 	}
+	public ELCORegisterEntryDTO withFWELIGIBLE2(String FWELIGIBLE2) {
+		this.FWELIGIBLE2 = FWELIGIBLE2;
+		return this;
+	}
 	public ELCORegisterEntryDTO withFWWOMCOUNTRY(String FWWOMCOUNTRY) {
 		this.FWWOMCOUNTRY = FWWOMCOUNTRY;
 		return this;
@@ -262,6 +316,10 @@ public class ELCORegisterEntryDTO {
 	}
 	public ELCORegisterEntryDTO withFWWOMGPS(String FWWOMGPS) {
 		this.FWWOMGPS = FWWOMGPS;
+		return this;
+	}
+	public ELCORegisterEntryDTO withform_name(String form_name) {
+		this.form_name = form_name;
 		return this;
 	}
 	public ELCORegisterEntryDTO withDetails(Map<String, String> details) {

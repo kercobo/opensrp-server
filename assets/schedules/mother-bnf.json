@@ -1,26 +1,33 @@
 {
-    "name": "Birth Notification Pregnancy Status Follow Up",
+    "name": "BirthNotificationPregnancyStatusFollowUp",
     "absolute": true,
     "milestones": [
         {
-            "name": "Birth Notification Pregnancy Status Follow Up",
+            "name": "BirthNotificationPregnancyStatusFollowUp",
             "scheduleWindows": {
-                "due": ["0 Days"],
-                "late": ["273 Days"]
+                "due": ["9 Days"],
+                "late": ["365 Days"],
+                "max": ["366 Days"]
             },
             "alerts": [
                 {
                     "window": "due",
                     "offset": ["0 Days"],
                     "interval": ["1 Day"],
-                    "count": "1"
+                    "count": "7"
                 },
                 {
                     "window": "late",
-                    "offset": ["273 Days"],
+                    "offset": ["9 Days"],
+                    "interval": ["1 Day"],
+                    "count": "356"
+                },
+                 {
+                    "window": "max",
+                    "offset": ["365 Days"],
                     "interval": ["1 Day"],
                     "count": "1"
-                }              
+                }                            
             ]
         }  
     ]

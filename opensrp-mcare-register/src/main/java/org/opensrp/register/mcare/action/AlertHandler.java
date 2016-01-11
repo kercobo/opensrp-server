@@ -5,6 +5,7 @@ import static org.motechproject.scheduletracking.api.domain.WindowName.earliest;
 import static org.motechproject.scheduletracking.api.domain.WindowName.late;
 import static org.motechproject.scheduletracking.api.domain.WindowName.max;
 import static org.opensrp.register.mcare.OpenSRPScheduleConstants.ChildScheduleConstants.CHILD_SCHEDULE_BCG;
+import static org.opensrp.register.mcare.OpenSRPScheduleConstants.ChildScheduleConstants.SCHEDULE_ENCC;
 import static org.opensrp.register.mcare.OpenSRPScheduleConstants.ChildScheduleConstants.CHILD_SCHEDULE_DPT_BOOSTER1;
 import static org.opensrp.register.mcare.OpenSRPScheduleConstants.ChildScheduleConstants.CHILD_SCHEDULE_DPT_BOOSTER2;
 import static org.opensrp.register.mcare.OpenSRPScheduleConstants.ChildScheduleConstants.CHILD_SCHEDULE_MEASLES;
@@ -25,6 +26,8 @@ import static org.opensrp.register.mcare.OpenSRPScheduleConstants.ECSchedulesCon
 import static org.opensrp.register.mcare.OpenSRPScheduleConstants.ECSchedulesConstants.EC_SCHEDULE_MALE_STERILIZATION_FOLLOWUP;
 import static org.opensrp.register.mcare.OpenSRPScheduleConstants.ECSchedulesConstants.EC_SCHEDULE_OCP_REFILL;
 import static org.opensrp.register.mcare.OpenSRPScheduleConstants.MotherScheduleConstants.SCHEDULE_ANC;
+import static org.opensrp.register.mcare.OpenSRPScheduleConstants.MotherScheduleConstants.SCHEDULE_BNF;
+import static org.opensrp.register.mcare.OpenSRPScheduleConstants.MotherScheduleConstants.SCHEDULE_PNC;
 import static org.opensrp.register.mcare.OpenSRPScheduleConstants.MotherScheduleConstants.SCHEDULE_AUTO_CLOSE_PNC;
 import static org.opensrp.register.mcare.OpenSRPScheduleConstants.MotherScheduleConstants.SCHEDULE_DELIVERY_PLAN;
 import static org.opensrp.register.mcare.OpenSRPScheduleConstants.MotherScheduleConstants.SCHEDULE_EDD;
@@ -55,21 +58,7 @@ public class AlertHandler {
 	@Autowired
 	public AlertHandler(TaskSchedulerService scheduler,
 			@Qualifier("AlertCreationAction") HookedEvent alertCreation) {
-		/*
-		 * scheduler.addHookedEvent(eq(SCHEDULE_ANC), any(), eq(max.toString()),
-		 * forceFulfill); scheduler.addHookedEvent(eq(SCHEDULE_LAB), any(),
-		 * eq(max.toString()), forceFulfill);
-		 * scheduler.addHookedEvent(eq(SCHEDULE_AUTO_CLOSE_PNC), any(), any(),
-		 * autoClosePNCAction); scheduler.addHookedEvent(motherSchedules(),
-		 * any(), anyOf(earliest.toString(), due.toString(), late.toString()),
-		 * alertCreation).addExtraData("beneficiaryType", "mother");
-		 * scheduler.addHookedEvent(childSchedules(), any(),
-		 * anyOf(earliest.toString(), due.toString(), late.toString(),
-		 * max.toString()), alertCreation).addExtraData("beneficiaryType",
-		 * "child"); scheduler.addHookedEvent(ecSchedules(), any(),
-		 * anyOf(earliest.toString(), due.toString(), late.toString()),
-		 * alertCreation).addExtraData("beneficiaryType", "ec");
-		 */
+	
 		scheduler.addHookedEvent(
 				hhSchedules(),
 				any(),
@@ -89,7 +78,7 @@ public class AlertHandler {
 				any(),
 				anyOf(earliest.toString(), due.toString(), late.toString(),
 						max.toString()), alertCreation).addExtraData(
-				"beneficiaryType", "mcaremother");
+				"beneficiaryType", "mother");
 		
 		scheduler.addHookedEvent(
 				childSchedules(),
@@ -103,7 +92,7 @@ public class AlertHandler {
 	}
 
 	private Matcher childSchedules() {
-		return anyOf(CHILD_SCHEDULE_BCG,
+		return anyOf(CHILD_SCHEDULE_BCG,SCHEDULE_ENCC,
 
 		CHILD_SCHEDULE_DPT_BOOSTER1, CHILD_SCHEDULE_DPT_BOOSTER2,
 
@@ -117,7 +106,7 @@ public class AlertHandler {
 	}
 
 	private Matcher motherSchedules() {
-		return anyOf(SCHEDULE_ANC, SCHEDULE_TT_1, SCHEDULE_TT_2,
+		return anyOf(SCHEDULE_ANC, SCHEDULE_BNF, SCHEDULE_PNC, SCHEDULE_TT_1, SCHEDULE_TT_2,
 				SCHEDULE_IFA_1, SCHEDULE_IFA_2, SCHEDULE_IFA_3, SCHEDULE_LAB,
 				SCHEDULE_EDD, SCHEDULE_HB_TEST_1, SCHEDULE_HB_TEST_2,
 				SCHEDULE_HB_FOLLOWUP_TEST, SCHEDULE_DELIVERY_PLAN);

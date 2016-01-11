@@ -23,7 +23,7 @@
     <mvc:annotation-driven/>
     
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-    	<property name="maxUploadSize" value="50000000"/>
+    	<property name="maxUploadSize" value="99999999999"/>
 	</bean>
 
 </beans>

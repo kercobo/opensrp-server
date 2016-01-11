@@ -2,11 +2,11 @@
   "form_data_definition_version": "1",
   "form": {
     "default_bind_path": "/model/instance/BirthNotificationPregnancyStatusFollowUp",
-    "bind_type": "BirthNotificationPregnancyStatusFollowUp",
+    "bind_type": "mcaremother",
     "fields": [
       {
-        "name": "version",
-        "bind": "/model/instance/BirthNotificationPregnancyStatusFollowUp/version"
+        "name": "id",
+        "shouldLoadValue": true
       },
       {
         "name": "changes",

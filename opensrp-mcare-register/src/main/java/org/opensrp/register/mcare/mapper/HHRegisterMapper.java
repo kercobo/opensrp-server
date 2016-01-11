@@ -44,6 +44,7 @@ public class HHRegisterMapper {
                         		.withFWSUBUNIT(entry.FWSUBUNIT())
                         		.withFWMAUZA_PARA(entry.FWMAUZA_PARA())
                         		.withFWNHHHGPS(entry.FWNHHHGPS())
+                        		.withform_name(entry.form_name())
                         		.withFWHOHFNAME(entry.FWHOHFNAME())
                         		.withFWHOHLNAME(entry.FWHOHLNAME())
                         		.withFWHOHBIRTHDATE(entry.FWHOHBIRTHDATE())

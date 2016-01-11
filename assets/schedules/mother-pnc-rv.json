@@ -3,10 +3,11 @@
     "absolute": true,
     "milestones": [
         {
-            "name": "PNCRV 1",
+            "name": "pncrv_1",
             "scheduleWindows": {
-                "due": ["0 Days"],
-                "late": ["1 Days"],
+            	"earliest": ["0 Days"],
+                "due": ["1 Days"],
+                "late": ["2 Days"],
                 "max": ["2 Days"]
             },
             "alerts": [
@@ -32,10 +33,11 @@
             ]
         },
         {
-            "name": "PNCRV 2",
+            "name": "pncrv_2",
             "scheduleWindows": {
-                "due": ["2 Days"],
-                "late": ["3 Days"],
+            	"earliest": ["2 Days"],
+                "due": ["3 Days"],
+                "late": ["6 Days"],
                 "max": ["6 Days"]
             },
             "alerts": [           
@@ -60,10 +62,11 @@
             ]
         },
         {
-            "name": "PNCRV 3",
+            "name": "pncrv_3",
             "scheduleWindows": {
-                "due": ["6 Days"],
-                "late": ["8 Days"],
+            	"earliest": ["6 Days"],
+                "due": ["8 Days"],
+                "late": ["9 Days"],
                 "max": ["9 Days"]
             },
             "alerts": [            	

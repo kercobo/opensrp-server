@@ -5,9 +5,9 @@ package org.opensrp.register.mcare.service.scheduling;
 
 import static java.text.MessageFormat.format;
 import static org.opensrp.register.mcare.OpenSRPScheduleConstants.MotherScheduleConstants.SCHEDULE_PNC;
-import static org.opensrp.register.mcare.OpenSRPScheduleConstants.MotherScheduleConstants.SCHEDULE_PNCRV_1;
-import static org.opensrp.register.mcare.OpenSRPScheduleConstants.MotherScheduleConstants.SCHEDULE_PNCRV_2;
-import static org.opensrp.register.mcare.OpenSRPScheduleConstants.MotherScheduleConstants.SCHEDULE_PNCRV_3;
+import static org.opensrp.register.mcare.OpenSRPScheduleConstants.MotherScheduleConstants.SCHEDULE_PNC_1;
+import static org.opensrp.register.mcare.OpenSRPScheduleConstants.MotherScheduleConstants.SCHEDULE_PNC_2;
+import static org.opensrp.register.mcare.OpenSRPScheduleConstants.MotherScheduleConstants.SCHEDULE_PNC_3;
 import static org.opensrp.register.mcare.OpenSRPScheduleConstants.MotherScheduleConstants.SCHEDULE_DELIVERY_PLAN;
 import static org.opensrp.register.mcare.OpenSRPScheduleConstants.MotherScheduleConstants.SCHEDULE_EDD;
 import static org.opensrp.register.mcare.OpenSRPScheduleConstants.MotherScheduleConstants.SCHEDULE_HB_TEST_1;
@@ -39,20 +39,18 @@ public class PNCSchedulesService {
 	}
 
     public void enrollPNCRVForMother(String caseId, LocalDate referenceDateForSchedule) {
-        for (String schedule : NON_ANC_SCHEDULES) {
-        	scheduler.enrollIntoSchedule(caseId, schedule, referenceDateForSchedule);
-        }
+       
         enrollIntoCorrectMilestoneOfPNCRVCare(caseId, referenceDateForSchedule);
     }
     private void enrollIntoCorrectMilestoneOfPNCRVCare(String entityId, LocalDate referenceDateForSchedule) {
         String milestone=null;
 
-        if (DateUtil.isDateWithinGivenPeriodBeforeToday(referenceDateForSchedule, Days.ZERO.toPeriod())) {
-            milestone = SCHEDULE_PNCRV_1;
-        } else if (DateUtil.isDateWithinGivenPeriodBeforeToday(referenceDateForSchedule, Days.TWO.toPeriod())) {
-            milestone = SCHEDULE_PNCRV_2;
-        } else if (DateUtil.isDateWithinGivenPeriodBeforeToday(referenceDateForSchedule, Days.SIX.toPeriod())) {
-            milestone = SCHEDULE_PNCRV_3;
+        if (DateUtil.isDateWithinGivenPeriodBeforeToday(referenceDateForSchedule, Days.ONE.toPeriod())) {
+            milestone = SCHEDULE_PNC_1;
+        } else if (DateUtil.isDateWithinGivenPeriodBeforeToday(referenceDateForSchedule, Days.FIVE.toPeriod())) {
+            milestone = SCHEDULE_PNC_2;
+        } else if (DateUtil.isDateWithinGivenPeriodBeforeToday(referenceDateForSchedule, Days.SIX.toPeriod().plusDays(2))) {
+            milestone = SCHEDULE_PNC_3;
         } else{
         	
         }

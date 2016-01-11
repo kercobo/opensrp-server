@@ -17,24 +17,26 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ChildSchedulesService {
+	
 	private static Logger logger = LoggerFactory.getLogger(ChildSchedulesService.class.toString());
 	private HealthSchedulerService scheduler;
+	
 	@Autowired
 	public ChildSchedulesService(HealthSchedulerService scheduler){
 		this.scheduler = scheduler;
 	}
 	 public void enrollENCCForChild(String caseId, LocalDate referenceDateForSchedule) {
 	       
-	        enrollIntoCorrectMilestoneOfPNCRVCare(caseId, referenceDateForSchedule);
+		 enrollIntoCorrectMilestoneOfENCCCare(caseId, referenceDateForSchedule);
 	    }
-	    private void enrollIntoCorrectMilestoneOfPNCRVCare(String entityId, LocalDate referenceDateForSchedule) {
+	    private void enrollIntoCorrectMilestoneOfENCCCare(String entityId, LocalDate referenceDateForSchedule) {
 	        String milestone=null;
 
-	        if (DateUtil.isDateWithinGivenPeriodBeforeToday(referenceDateForSchedule, Days.ZERO.toPeriod())) {
+	        if (DateUtil.isDateWithinGivenPeriodBeforeToday(referenceDateForSchedule, Days.ONE.toPeriod())) {
 	            milestone = SCHEDULE_ENCC_1;
-	        } else if (DateUtil.isDateWithinGivenPeriodBeforeToday(referenceDateForSchedule, Days.TWO.toPeriod())) {
+	        } else if (DateUtil.isDateWithinGivenPeriodBeforeToday(referenceDateForSchedule, Days.FIVE.toPeriod())) {
 	            milestone = SCHEDULE_ENCC_2;
-	        } else if (DateUtil.isDateWithinGivenPeriodBeforeToday(referenceDateForSchedule, Days.SIX.toPeriod())) {
+	        } else if (DateUtil.isDateWithinGivenPeriodBeforeToday(referenceDateForSchedule, Days.SIX.toPeriod().plusDays(2))) {
 	            milestone = SCHEDULE_ENCC_3;
 	        } else{
 	        	

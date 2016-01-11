@@ -1,28 +1,39 @@
 package org.opensrp.connector.openmrs.service;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
 import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.httpclient.Credentials;
 import org.apache.commons.httpclient.HttpVersion;
 import org.apache.http.HttpEntity;
+import org.apache.http.HttpHost;
 import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.auth.AuthScope;
+import org.apache.http.auth.UsernamePasswordCredentials;
 import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.CredentialsProvider;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.mime.MultipartEntity;
 import org.apache.http.entity.mime.content.ContentBody;
 import org.apache.http.entity.mime.content.FileBody;
 import org.apache.http.entity.mime.content.StringBody;
+import org.apache.http.impl.client.BasicCredentialsProvider;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.params.CoreProtocolPNames;
 import org.apache.http.util.EntityUtils;
+import org.bouncycastle.util.encoders.Base64Encoder;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -30,6 +41,9 @@ import org.opensrp.api.domain.Address;
 import org.opensrp.api.domain.BaseEntity;
 import org.opensrp.api.domain.Client;
 import org.opensrp.connector.HttpUtil;
+import org.opensrp.connector.MultipartUtility;
+import org.opensrp.domain.Multimedia;
+import org.opensrp.repository.MultimediaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
@@ -42,11 +56,13 @@ import com.mysql.jdbc.StringUtils;
 public class PatientService extends OpenmrsService{
 	
 	private OpenmrsLocationService locationService;
-//TODO include everything for patient registration. i.e. person, person name, patient identifier
+	private MultimediaRepository multimediaRepository;
+   //TODO include everything for patient registration. i.e. person, person name, patient identifier
 	// include get for patient on different params like name, identifier, location, uuid, attribute,etc
 	//person methods should be separate
 	private static final String PERSON_URL = "ws/rest/v1/person";
 	private static final String PATIENT_URL = "ws/rest/v1/patient";
+	private static final String PATIENT_IMAGE_URL = "ws/rest/v1/patientimage/uploadimage";
 	private static final String PATIENT_IDENTIFIER_URL = "identifier";
 	private static final String PERSON_ATTRIBUTE_URL = "attribute";
 	private static final String PERSON_ATTRIBUTE_TYPE_URL = "ws/rest/v1/personattributetype";
@@ -239,49 +255,34 @@ public class PatientService extends OpenmrsService{
 		return new JSONObject(HttpUtil.post(getURL()+"/"+PATIENT_URL, "", p.toString(), OPENMRS_USER, OPENMRS_PWD).body());
 	}
 	
-	public void uploadFile(String patientIdentifier, String fileCategory, MultipartFile multipartFile) throws ClientProtocolException, IOException
+	public void patientImageUpload(Multimedia multimedia) throws IOException
 	{
-		    HttpClient httpclient = new DefaultHttpClient();
-		   // httpclient.getParams().setParameter(CoreProtocolPNames.PROTOCOL_VERSION, HttpVersion.HTTP_1_1);
-
-		    HttpPost httppost = new HttpPost("http://46.101.51.199:8080/openmrs/ws/rest/v1/patientimage/uploadimage");
-		    httppost.setHeader("Accept", "multipart/form-data");
-		    
-		    File convFile = new File("/home/julkar/nain/image.jpeg");
-		  /*  convFile.createNewFile(); 
-		    FileOutputStream fos = new FileOutputStream(convFile); 
-		    fos.write(multipartFile.getBytes());
-		    fos.close(); */
-		    
-		    
-
-		    MultipartEntity mpEntity = new MultipartEntity();
-		    ContentBody patientidentifier = new StringBody(patientIdentifier);
-		    ContentBody category = new StringBody(fileCategory);
-		    ContentBody file = new FileBody(convFile, "image/jpeg");
-		    
-		    mpEntity.addPart("patientidentifier", patientidentifier);
-		    mpEntity.addPart("category", category);
-		    mpEntity.addPart("file", file);
-
-	        
-	        String url = "http://46.101.51.199:8080/openmrs/ws/rest/v1/patientimage/uploadimage";
-	        
-	        HttpUtil.makeConnection(url, "", HttpMethod.POST, true, OPENMRS_USER, OPENMRS_PWD);
-	        
-		    httppost.setEntity(mpEntity);
-		    System.out.println("executing request " + httppost.getRequestLine());
-		    HttpResponse response = httpclient.execute(httppost);
-		    HttpEntity resEntity = response.getEntity();
-
-		    if (resEntity != null) {
-		      System.out.println(EntityUtils.toString(resEntity));
-		    }
-		    if (resEntity != null) {
-		      resEntity.consumeContent();
-		    }
-
-		    httpclient.getConnectionManager().shutdown();
+		
+	     //String requestURL =  "http://46.101.51.199:8080/openmrs/ws/rest/v1/patientimage/uploadimage";
+		
+		 try {
+			    File convFile = new File(multimedia.getFilePath());
+	            MultipartUtility multipart = new MultipartUtility(getURL()+"/"+PATIENT_IMAGE_URL, OPENMRS_USER, OPENMRS_PWD);
+	             
+	           // multipart.addHeaderField("User-Agent", "CodeJava");
+	           // multipart.addHeaderField("Test-Header", "Header-Value");
+	             
+	            multipart.addFormField("patientidentifier", multimedia.getCaseId());
+	            multipart.addFormField("category", multimedia.getFileCategory());
+	             
+	            multipart.addFilePart("file", convFile);
+	 
+	            
+	            List<String> response = multipart.finish();
+	             
+	            System.out.println("SERVER REPLIED:");
+	             
+	            for (String line : response) {
+	                System.out.println(line);
+	            }
+	        } catch (IOException ex) {
+	            System.err.println(ex);
+	        }
 	}
 }
 

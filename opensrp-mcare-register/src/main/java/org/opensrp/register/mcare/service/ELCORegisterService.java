@@ -26,10 +26,10 @@ public class ELCORegisterService {
 	public ELCORegister getELCORegisterForProvider(String providerId)
 	{
 		ArrayList<ELCORegisterEntry> elcoRegisterEntries = new ArrayList<>();
-        List<Elco> elcos = allElcos.allOpenELCOsForProvider(providerId);
+        List<Elco> elcos = allElcos.allOpenELCOs();
         for (Elco ec : elcos) {
             ELCORegisterEntry ecRegisterEntry = new ELCORegisterEntry()
-            		.withCASEID(ec.CASEID())
+            		.withCASEID(ec.caseId())
             		.withINSTANCEID(ec.INSTANCEID())
             		.withPROVIDERID(ec.PROVIDERID())
             		.withLOCATIONID(ec.LOCATIONID())
@@ -38,6 +38,14 @@ public class ELCORegisterService {
             		//.withEND(ec.END())
             		.withGOBHHID(ec.GOBHHID())
             		.withJiVitAHHID(ec.JiVitAHHID())
+            		.withexisting_ELCO(ec.existing_ELCO())
+            		.withnew_ELCO(ec.new_ELCO())
+            		.withELCO(ec.ELCO())
+            		.withWomanREGDATE(ec.WomanREGDATE())
+            		.withFWNHWOMHUSALV(ec.FWNHWOMHUSALV())
+            		.withFWNHWOMHUSLIV(ec.FWNHWOMHUSLIV())
+            		.withFWNHWOMHUSSTR(ec.FWNHWOMHUSSTR())
+            		.withFWNHWOMSTRMEN(ec.FWNHWOMSTRMEN())
             		.withFWCENDATE(ec.FWCENDATE())
             		.withFWCENSTAT(ec.FWCENSTAT())
             		.withFWWOMFNAME(ec.FWWOMFNAME())
@@ -54,6 +62,7 @@ public class ELCORegisterService {
             		.withFWGENDER(ec.FWGENDER())
             		.withFWWOMAGE(ec.FWWOMAGE())
             		.withFWELIGIBLE(ec.FWELIGIBLE())
+            		.withFWELIGIBLE2(ec.FWELIGIBLE2())
             		.withFWWOMCOUNTRY(ec.FWWOMCOUNTRY())
                     .withFWWOMDIVISION(ec.FWWOMDIVISION())
                     .withFWWOMDISTRICT(ec.FWWOMDISTRICT())
@@ -64,6 +73,7 @@ public class ELCORegisterService {
                     .withFWWOMMAUZA_PARA(ec.FWWOMMAUZA_PARA())
                     .withFWWOMGOBHHID(ec.FWWOMGOBHHID())
                     .withFWWOMGPS(ec.FWWOMGPS())
+                    .withform_name(ec.form_name())
             		.withDetails(ec.details())
             		.withPSRFDETAILS(ec.PSRFDETAILS())
             		.withSTART(ec.getDetail(START_DATE))

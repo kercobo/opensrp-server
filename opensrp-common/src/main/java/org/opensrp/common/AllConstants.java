@@ -26,7 +26,7 @@ public class AllConstants {
     	public static final String ANC_REMINDER_VISIT_2 = "anc_reminder_visit_2";
     	public static final String ANC_REMINDER_VISIT_3 = "anc_reminder_visit_3";
     	public static final String ANC_REMINDER_VISIT_4 = "anc_reminder_visit_4";
-    	public static final String BNF_FORM = "bnf_form";
+    	public static final String BNF_FORM = "birthnotificationpregnancystatusfollowup";
     	public static final String PNC_REMINDER_VISIT_1 = "pnc_reminder_visit_1";
     	public static final String PNC_REMINDER_VISIT_2 = "pnc_reminder_visit_2";
     	public static final String PNC_REMINDER_VISIT_3 = "pnc_reminder_visit_3";
@@ -133,11 +133,19 @@ public class AllConstants {
     {
     	public static final String FW_PROVIDERID ="PROVIDERID";
     	public static final String FW_LOCATIONID ="LOCATIONID";
+    	public static final String relationalid ="relationalid";
     	public static final String FW_TODAY ="TODAY";
     	public static final String START_DATE = "start";
     	public static final String END_DATE = "end";
     	public static final String FW_GOBHHID ="GOBHHID";
     	public static final String FW_JiVitAHHID ="JiVitAHHID";
+    	public static final String existing_ELCO ="existing_ELCO";
+    	public static final String new_ELCO ="new_ELCO";
+    	public static final String ELCO ="ELCO";
+    	public static final String WomanREGDATE ="WomanREGDATE";
+    	public static final String form_name ="form_name";
+    	public static final String FW_CENDATE ="FWCENDATE";
+    	public static final String FW_CENSTAT ="FWCENSTAT";
     	public static final String FW_WOMFNAME = "FWWOMFNAME";
     	public static final String FW_WOMLNAME = "FWWOMLNAME";
     	public static final String FW_WOMANYID = "FWWOMANYID";
@@ -155,6 +163,7 @@ public class AllConstants {
     	public static final String FW_NHWOMHUSSTR = "FWNHWOMHUSSTR";
     	public static final String FW_NHWOMHUSLIV = "FWNHWOMHUSLIV";
     	public static final String FW_ELIGIBLE = "FWELIGIBLE";
+    	public static final String FW_ELIGIBLE2 = "FWELIGIBLE2";
     	public static final String FW_WOMCOUNTRY ="FWWOMCOUNTRY";
     	public static final String FW_WOMDIVISION ="FWWOMDIVISION";
     	public static final String FW_WOMDISTRICT ="FWWOMDISTRICT";
@@ -197,6 +206,12 @@ public class AllConstants {
     	public static final String FW_PSRMUAC ="FWPSRMUAC";	
     	public static final String FW_PSRPHONE ="FWPSRPHONE";
     	public static final String FW_PSRPHONENUM ="FWPSRPHONENUM";	
+    	public static final String FW_VG = "FWVG";
+    	public static final String FW_HRP = "FWHRP";
+    	public static final String FW_HR_PSR = "FWHR_PSR";
+    	public static final String FW_FLAGVALUE = "FWFLAGVALUE";
+    	public static final String FW_SORTVALUE = "FWSORTVALUE"; 
+    	public static final String FWNOTELIGIBLE = "FWNOTELIGIBLE";
     	
     }
     
@@ -528,7 +543,7 @@ public class AllConstants {
 
     public static class ANCFormFields {
         public static final String MOTHER_ID = "motherId";
-        public static final String MCARE_MOTHER_ID = "id";
+        public static final String MCARE_MOTHER_ID = "elco.mcaremother.id";
         public static final String REGISTRATION_DATE = "registrationDate";
         public static final String ANC_VISIT_DATE_FIELD = "ancVisitDate";
         public static final String ANC_VISIT_NUMBER_FIELD = "ancVisitNumber";
@@ -820,3 +835,4 @@ public class AllConstants {
         public static final String WWW_AUTHENTICATE_HEADER = "www-authenticate";
     }
 }
+

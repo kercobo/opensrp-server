@@ -16,6 +16,8 @@ public class Acl extends MotechBaseDataObject {
 	@JsonProperty
 	private String roleName;
 	@JsonProperty
+	private String status;
+	@JsonProperty
 	private Map<String, String> accessTokens;
 
 	public Acl()
@@ -26,6 +28,10 @@ public class Acl extends MotechBaseDataObject {
 		this.roleName = roleName;
 		return this;
 	}
+	public Acl withStatus(String status) {
+		this.status = status;
+		return this;
+	}
 	
 	public Acl withAccessTokens(Map<String, String> accessTokens) {
         this.accessTokens = new HashMap<>(accessTokens);
@@ -34,6 +40,9 @@ public class Acl extends MotechBaseDataObject {
 	
 	public String getRoleName() {
 		return roleName;
+	}
+	public String getStatus() {
+		return status;
 	}
 
 	public Map<String, String> getAccessTokens() {

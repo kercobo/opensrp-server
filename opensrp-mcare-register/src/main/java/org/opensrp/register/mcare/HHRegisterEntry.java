@@ -49,6 +49,8 @@ public class HHRegisterEntry {
 	
 	private String FWNHHHGPS;
 	
+	private String form_name;
+	
 	private String FWHOHFNAME;
 	
 	private String FWHOHLNAME;
@@ -128,6 +130,11 @@ public class HHRegisterEntry {
 
 	public HHRegisterEntry withFWNHHHGPS(String FWNHHHGPS) {
 		this.FWNHHHGPS = FWNHHHGPS;
+		return this;
+	}
+	
+	public HHRegisterEntry withform_name(String form_name) {
+		this.form_name = form_name;
 		return this;
 	}
 
@@ -269,6 +276,10 @@ public class HHRegisterEntry {
 
 	public String FWNHHHGPS() {
 		return FWNHHHGPS;
+	}
+	
+	public String form_name() {
+		return form_name;
 	}
 
 	public String FWCOUNTRY() {

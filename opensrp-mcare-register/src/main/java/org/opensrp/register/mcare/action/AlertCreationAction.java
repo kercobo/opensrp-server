@@ -3,6 +3,7 @@ package org.opensrp.register.mcare.action;
 import static org.opensrp.dto.BeneficiaryType.elco;
 import static org.opensrp.dto.BeneficiaryType.household;
 import static org.opensrp.dto.BeneficiaryType.mother;
+import static org.opensrp.dto.BeneficiaryType.child;
 
 import java.util.Map;
 
@@ -55,7 +56,7 @@ public class AlertCreationAction implements HookedEvent {
 		DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd");
 		
 		if (household.equals(beneficiaryType)) {
-			HouseHold houseHold = allHouseHolds.findByCASEID(caseID);
+			HouseHold houseHold = allHouseHolds.findByCaseId(caseID);
 			if (houseHold != null) {
 				instanceId= houseHold.INSTANCEID();
 				providerId = houseHold.PROVIDERID();
@@ -81,10 +82,16 @@ public class AlertCreationAction implements HookedEvent {
 				startOfEarliestWindow = DateTime.parse(mother.TODAY(),formatter);
 			}
 		}
-		/*
-		 * else if (ec.equals(beneficiaryType)) { providerId =
-		 * allHouseHolds.findByCaseId(caseID).PROVIDERID(); }
-		 */
+		else if(child.equals(beneficiaryType))
+		{
+			Mother mother = allMothers.findByCaseId(caseID);
+
+			if (mother != null) {
+				instanceId= mother.INSTANCEID();
+				providerId = mother.PROVIDERID();
+				startOfEarliestWindow = DateTime.parse(mother.TODAY(),formatter);
+			}
+		}
 		else {
 			throw new IllegalArgumentException("Beneficiary Type : "
 					+ beneficiaryType + " is of unknown type");

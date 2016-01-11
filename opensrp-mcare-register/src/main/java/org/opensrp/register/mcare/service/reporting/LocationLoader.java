@@ -33,12 +33,12 @@ public class LocationLoader implements ILocationLoader {
     }
     
     private Location loadLocationForHouseHold(String caseId) {
-        HouseHold houseHold = allHouseHolds.findByCASEID(caseId);
+        HouseHold houseHold = allHouseHolds.findByCaseId(caseId);
         //return couple.location();
         return new Location(houseHold.LOCATIONID(), houseHold.LOCATIONID(), houseHold.LOCATIONID());
     }
     private Location loadLocationForElco(String caseId) {
-        HouseHold houseHold = allHouseHolds.findByCASEID(caseId);
+        HouseHold houseHold = allHouseHolds.findByCaseId(caseId);
         //return couple.location();
         return new Location(houseHold.LOCATIONID(), houseHold.LOCATIONID(), houseHold.LOCATIONID());
     }

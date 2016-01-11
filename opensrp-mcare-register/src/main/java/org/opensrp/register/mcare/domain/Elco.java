@@ -19,7 +19,7 @@ import org.motechproject.model.MotechBaseDataObject;
 public class Elco extends MotechBaseDataObject {
 
 	@JsonProperty
-	private String CASEID;
+	private String caseId;
 	@JsonProperty
 	private String INSTANCEID;
 	@JsonProperty
@@ -33,11 +33,27 @@ public class Elco extends MotechBaseDataObject {
 	@JsonProperty
 	private String END;
 	@JsonProperty
-    	private String isClosed;
+	private String WomanREGDATE;
+	@JsonProperty
+	private String FWNHWOMSTRMEN;
+	@JsonProperty
+	private String FWNHWOMHUSALV;
+	@JsonProperty
+	private String FWNHWOMHUSLIV;
+	@JsonProperty
+	private String FWNHWOMHUSSTR;
+	@JsonProperty
+    private String isClosed;
 	@JsonProperty
 	private String GOBHHID;
 	@JsonProperty
 	private String JiVitAHHID;
+	@JsonProperty
+	private String existing_ELCO;
+	@JsonProperty
+	private String new_ELCO;
+	@JsonProperty
+	private String ELCO;
 	@JsonProperty
 	private String FWCENDATE;
 	@JsonProperty
@@ -81,6 +97,8 @@ public class Elco extends MotechBaseDataObject {
 	@JsonProperty
 	private String FWELIGIBLE;
 	@JsonProperty
+	private String FWELIGIBLE2;
+	@JsonProperty
 	private String FWWOMCOUNTRY;
 	@JsonProperty
 	private String FWWOMDIVISION;
@@ -101,6 +119,8 @@ public class Elco extends MotechBaseDataObject {
 	@JsonProperty
 	private String FWWOMGPS;
 	@JsonProperty
+	private String form_name;
+	@JsonProperty
 	private Map<String, String> details;
 	
 	@JsonProperty
@@ -110,8 +130,8 @@ public class Elco extends MotechBaseDataObject {
 
 	}
 
-	public Elco withCASEID(String CASEID) {
-		this.CASEID = CASEID;
+	public Elco withCASEID(String caseId) {
+		this.caseId = caseId;
 		return this;
 	}
 	
@@ -140,21 +160,50 @@ public class Elco extends MotechBaseDataObject {
 		this.END = END;
 		return this;
 	}
+	public Elco withWomanREGDATE(String WomanREGDATE) {
+		this.WomanREGDATE = WomanREGDATE;
+		return this;
+	}
+	public Elco withFWNHWOMSTRMEN(String FWNHWOMSTRMEN) {
+		this.FWNHWOMSTRMEN = FWNHWOMSTRMEN;
+		return this;
+	}
+	public Elco withFWNHWOMHUSALV(String FWNHWOMHUSALV) {
+		this.FWNHWOMHUSALV = FWNHWOMHUSALV;
+		return this;
+	}
+	public Elco withFWNHWOMHUSLIV(String FWNHWOMHUSLIV) {
+		this.FWNHWOMHUSLIV = FWNHWOMHUSLIV;
+		return this;
+	}
+	public Elco withFWNHWOMHUSSTR(String FWNHWOMHUSSTR) {
+		this.FWNHWOMHUSSTR = FWNHWOMHUSSTR;
+		return this;
+	}
 	public Elco withGOBHHID(String GOBHHID) {
 		this.GOBHHID = GOBHHID;
 		return this;
 	}
-
 	public Elco withJiVitAHHID(String JiVitAHHID) {
 		this.JiVitAHHID = JiVitAHHID;
 		return this;
 	}
-
+	public Elco withexisting_ELCO(String existing_ELCO) {
+		this.existing_ELCO = existing_ELCO;
+		return this;
+	}
+	public Elco withnew_ELCO(String new_ELCO) {
+		this.new_ELCO = new_ELCO;
+		return this;
+	}
+	public Elco withELCO(String ELCO) {
+		this.ELCO = ELCO;
+		return this;
+	}
 	public Elco withFWCENDATE(String FWCENDATE) {
 		this.FWCENDATE = FWCENDATE;
 		return this;
 	}
-
 	public Elco withFWCENSTAT(String FWCENSTAT) {
 		this.FWCENSTAT = FWCENSTAT;
 		return this;
@@ -235,6 +284,10 @@ public class Elco extends MotechBaseDataObject {
 		this.FWELIGIBLE = FWELIGIBLE;
 		return this;
 	}
+	public Elco withFWELIGIBLE2(String FWELIGIBLE2) {
+		this.FWELIGIBLE2 = FWELIGIBLE2;
+		return this;
+	}
 	public Elco withFWWOMCOUNTRY(String FWWOMCOUNTRY) {
 		this.FWWOMCOUNTRY = FWWOMCOUNTRY;
 		return this;
@@ -275,6 +328,10 @@ public class Elco extends MotechBaseDataObject {
 		this.FWWOMGPS = FWWOMGPS;
 		return this;
 	}
+	public Elco withform_name(String form_name) {
+		this.form_name = form_name;
+		return this;
+	}
 	public Elco withDetails(Map<String, String> details) {
         this.details = new HashMap<>(details);
         return this;
@@ -283,8 +340,8 @@ public class Elco extends MotechBaseDataObject {
 		this.PSRFDETAILS = PSRFDETAILS;
 		return this;
 	}
-	public String CASEID() {
-		return CASEID;
+	public String caseId() {
+		return caseId;
 	}
 	public String INSTANCEID()
 	{
@@ -305,11 +362,35 @@ public class Elco extends MotechBaseDataObject {
 	public String END() {
 		return  END;
 	}
+	public String WomanREGDATE() {
+		return  WomanREGDATE;
+	}
+	public String FWNHWOMSTRMEN() {
+		return  FWNHWOMSTRMEN;
+	}
+	public String FWNHWOMHUSALV() {
+		return  FWNHWOMHUSALV;
+	}
+	public String FWNHWOMHUSLIV() {
+		return  FWNHWOMHUSLIV;
+	}
+	public String FWNHWOMHUSSTR() {
+		return  FWNHWOMHUSSTR;
+	}
 	public String GOBHHID() {
 		return GOBHHID;
 	}
 	public String JiVitAHHID() {
 		return JiVitAHHID;
+	}
+	public String existing_ELCO() {
+		return existing_ELCO;
+	}
+	public String new_ELCO() {
+		return new_ELCO;
+	}
+	public String ELCO() {
+		return ELCO;
 	}
 	public String FWCENDATE() {
 		return FWCENDATE;
@@ -374,6 +455,9 @@ public class Elco extends MotechBaseDataObject {
 	public String FWELIGIBLE() {
 		return FWELIGIBLE;
 	}
+	public String FWELIGIBLE2() {
+		return FWELIGIBLE2;
+	}
 	public String FWWOMCOUNTRY() {
 		return FWWOMCOUNTRY;
 	}
@@ -404,8 +488,11 @@ public class Elco extends MotechBaseDataObject {
 	public String FWWOMGPS() {
 		return FWWOMGPS;
 	}
-	 private String getCASEID() {
-	        return CASEID;
+	public String form_name() {
+		return form_name;
+	}
+	 private String getCaseId() {
+	        return caseId;
 	 }
 	 
 	 public Map<String, String> details() {

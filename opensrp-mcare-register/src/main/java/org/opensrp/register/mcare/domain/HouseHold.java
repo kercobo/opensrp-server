@@ -15,7 +15,7 @@ import org.motechproject.model.MotechBaseDataObject;
 @TypeDiscriminator("doc.type === 'HouseHold'")
 public class HouseHold extends MotechBaseDataObject {
 	@JsonProperty
-	private String CASEID;
+	private String caseId;
 	@JsonProperty
 	private String INSTANCEID;
 	@JsonProperty
@@ -53,6 +53,8 @@ public class HouseHold extends MotechBaseDataObject {
 	@JsonProperty
 	private String FWNHHHGPS;
 	@JsonProperty
+	private String form_name;
+	@JsonProperty
 	private String FWHOHFNAME;
 	@JsonProperty
 	private String FWHOHLNAME;
@@ -80,8 +82,8 @@ public class HouseHold extends MotechBaseDataObject {
 		this.ELCODETAILS = new ArrayList<>();
 	}
 	
-	public HouseHold withCASEID(String CASEID) {
-		this.CASEID = CASEID;
+	public HouseHold withCASEID(String caseId) {
+		this.caseId = caseId;
 		return this;
 	}
 
@@ -132,6 +134,11 @@ public class HouseHold extends MotechBaseDataObject {
 
 	public HouseHold withFWNHHHGPS(String FWNHHHGPS) {
 		this.FWNHHHGPS = FWNHHHGPS;
+		return this;
+	}
+	
+	public HouseHold withform_name(String form_name) {
+		this.form_name = form_name;
 		return this;
 	}
 
@@ -231,8 +238,8 @@ public class HouseHold extends MotechBaseDataObject {
         return this;
     }
 
-	public String CASEID() {
-		return CASEID;
+	public String caseId() {
+		return caseId;
 	}
 
 	public String INSTANCEID() {
@@ -274,6 +281,10 @@ public class HouseHold extends MotechBaseDataObject {
 
 	public String FWNHHHGPS() {
 		return FWNHHHGPS;
+	}
+	
+	public String form_name() {
+		return form_name;
 	}
 
 	public String FWCOUNTRY() {
@@ -350,8 +361,8 @@ public class HouseHold extends MotechBaseDataObject {
 		return ELCODETAILS;
 	}
 
-	private String getCASEID() {
-		return CASEID;
+	private String getCaseId() {
+		return caseId;
 	}
 
 	public Map<String, String> details() {

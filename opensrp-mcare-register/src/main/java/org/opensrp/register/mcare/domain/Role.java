@@ -14,6 +14,8 @@ public class Role extends MotechBaseDataObject {
 	private String userName;
 	@JsonProperty
 	private String roleName;
+	@JsonProperty
+	private String status;
 	
 	public Role(){
 		
@@ -26,11 +28,18 @@ public class Role extends MotechBaseDataObject {
 		this.roleName = roleName;
 		return this;
 	}
+	public Role withStatus(String status) {
+		this.status = status;
+		return this;
+	}
 	public String getUserName() {
 		return userName;
 	}
 	public String getRoleName() {
 		return roleName;
+	}
+	public String getStatus() {
+		return status;
 	}
 
 	@Override

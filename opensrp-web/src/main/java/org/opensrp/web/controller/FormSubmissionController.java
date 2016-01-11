@@ -32,6 +32,7 @@ import org.opensrp.form.service.FormSubmissionConverter;
 import org.opensrp.form.service.FormSubmissionService;
 import org.opensrp.register.mcare.OpenSRPScheduleConstants.OpenSRPEvent;
 import org.opensrp.register.mcare.service.HHService;
+import org.opensrp.repository.MultimediaRepository;
 import org.opensrp.scheduler.SystemEvent;
 import org.opensrp.scheduler.TaskSchedulerService;
 import org.opensrp.service.MultimediaService;
@@ -64,11 +65,13 @@ public class FormSubmissionController {
     private HHService hhService;
     private OpenmrsUserService openmrsUserService;
     private MultimediaService multimediaService;
+    private MultimediaRepository multimediaRepository;
 
     @Autowired
     public FormSubmissionController(FormSubmissionService formSubmissionService, TaskSchedulerService scheduler,
     		EncounterService encounterService, OpenmrsConnector openmrsConnector, PatientService patientService, 
-    		HouseholdService householdService, MultimediaService multimediaService, OpenmrsUserService openmrsUserService) {
+    		HouseholdService householdService, MultimediaService multimediaService, OpenmrsUserService openmrsUserService,
+    		MultimediaRepository multimediaRepository) {
         this.formSubmissionService = formSubmissionService;
         this.scheduler = scheduler;
         
@@ -79,6 +82,7 @@ public class FormSubmissionController {
         this.hhService = hhService;
         this.openmrsUserService = openmrsUserService;
         this.multimediaService = multimediaService;
+        this.multimediaRepository = multimediaRepository;
     }
 
     @RequestMapping(method = GET, value = "/form-submissions")
@@ -199,32 +203,23 @@ public class FormSubmissionController {
     {
     	return new ResponseEntity<>(new Gson().toJson(hhService.getEntityIdBybrnId(brnIdList)),OK);
     }
-    
-   /* @RequestMapping(method = GET, value = "/user-location")
+
+    @RequestMapping(method = GET, value = "/user-location")
     @ResponseBody
     public ResponseEntity<String> getUserByLocation(@RequestParam("location-name") String locationName)
     {
-    	JSONObject userObject=null;
+    	JSONObject usersAssignedToLocation=null;
+    	String userName  = "";
     	try {
-    		userObject =  openmrsUserService.getTeamMemberByLocation(locationName);
+    		usersAssignedToLocation =  openmrsUserService.getTeamMemberByLocation(locationName);   		
+    		userName = usersAssignedToLocation.getJSONArray("results").getJSONObject(0).getJSONObject("user").getString("username");
     		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return new ResponseEntity<>(new Gson().toJson(userObject),OK);
+		return new ResponseEntity<>(userName, OK);
     }
     
-    @RequestMapping(method = GET, value = "/user-locationtest")
-    @ResponseBody
-    public ResponseEntity<HttpStatus> getUserByLocationtest(@RequestParam("location-name") String locationName)
-    {
-    	
-    	System.out.println("\n LocationTest : "+ openmrsUserService.getTeamMemberByLocationTest(locationName) + "\n");
-    	
-    	return new ResponseEntity<>(OK);
-    }
-    
-*/  
     @RequestMapping(headers = {"Accept=application/json"}, method = GET, value = "/multimedia-file")
     @ResponseBody
     public List<MultimediaDTO> getFiles(@RequestParam("anm-id") String providerId) {
@@ -242,10 +237,13 @@ public class FormSubmissionController {
     public ResponseEntity<String> uploadFiles(@RequestParam("anm-id") String providerId, @RequestParam("entity-id") String entityId,@RequestParam("content-type") String contentType, @RequestParam("file-category") String fileCategory, @RequestParam("file") MultipartFile file) throws ClientProtocolException, IOException {
     	
     	MultimediaDTO multimediaDTO = new MultimediaDTO(entityId, providerId, contentType, null, fileCategory);
-    	
     	String status = multimediaService.saveMultimediaFile(multimediaDTO, file);
     	
-    	 patientService.uploadFile(entityId, fileCategory, file);
+    	if(status.equals("success"))
+    	{
+         Multimedia multimedia =   multimediaRepository.findByCaseId(entityId);
+    	 patientService.patientImageUpload(multimedia);
+    	}
     	 return new ResponseEntity<>(new Gson().toJson(status), OK);
     }
 }

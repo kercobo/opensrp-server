@@ -26,11 +26,11 @@ public class HHRegisterService {
 	public HHRegister getHHRegisterForProvider(String providerId)
 	{
 		ArrayList<HHRegisterEntry> hhRegisterEntries = new ArrayList<>();
-        List<HouseHold> hhs = allHouseHolds.allOpenHHsForProvider(providerId);
+        List<HouseHold> hhs = allHouseHolds.findAllHouseHolds();
         
         for (HouseHold hh : hhs) {
         	HHRegisterEntry hhRegisterEntry = new HHRegisterEntry()
-        		.withCASEID(hh.CASEID()) 
+        		.withCASEID(hh.caseId()) 
         		.withINSTANCEID(hh.INSTANCEID())
         		.withPROVIDERID(hh.PROVIDERID())
         		//.withLOCATIONID(hh.LOCATIONID())
@@ -47,6 +47,7 @@ public class HHRegisterService {
                 .withFWSUBUNIT(hh.FWSUBUNIT())
                 .withFWMAUZA_PARA(hh.FWMAUZA_PARA())
         		.withFWNHHHGPS(hh.FWNHHHGPS())
+        		.withform_name(hh.form_name())
         		.withFWHOHFNAME(hh.FWHOHFNAME())
         		.withFWHOHLNAME(hh.FWHOHLNAME())
         		.withFWHOHBIRTHDATE(hh.FWHOHBIRTHDATE())

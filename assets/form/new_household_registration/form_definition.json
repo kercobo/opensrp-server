@@ -49,6 +49,10 @@
         "bind": "/model/instance/FWNewHH/existing_Mauzapara"
       },
       {
+        "name": "form_name",
+        "bind": "/model/instance/FWNewHH/form_name"
+      },
+      {
         "name": "today",
         "bind": "/model/instance/FWNewHH/today"
       },
@@ -133,10 +137,6 @@
         "bind": "/model/instance/FWNewHH/FWNHHMWRA"
       },
       {
-        "name": "join_names",
-        "bind": "/model/instance/FWNewHH/join_names"
-      },
-      {
         "name": "ELCO",
         "bind": "/model/instance/FWNewHH/ELCO"
       },
@@ -218,6 +218,10 @@
           {
             "name": "FWELIGIBLE",
             "bind": "/model/instance/FWNewHH/woman/FWELIGIBLE"
+          },
+          {
+            "name": "FWELIGIBLE2",
+            "bind": "/model/instance/FWNewHH/woman/FWELIGIBLE2"
           },
           {
             "name": "FWWOMANYID",

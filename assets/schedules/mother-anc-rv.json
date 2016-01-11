@@ -3,35 +3,29 @@
     "absolute": true,
     "milestones": [
         {
-            "name": "ANCRV 1",
+            "name": "ancrv_1",
             "scheduleWindows": {
                 "earliest": ["0 Days"],
                 "due": ["51 Days"],
                 "late": ["56 Days"],
-                "max": ["163 Days"]
+                "max": ["56 Days"]
             },
             "alerts": [
-            	{
-                    "window": "earliest",
-                    "offset": ["50 Days"],
+                 {
+                    "window": "due",
+                    "offset": ["0 Days"],
                     "interval": ["1 Day"],
-                    "count": "50"
+                    "count": "51"
                 },
                 {
-                    "window": "due",
+                    "window": "late",
                     "offset": ["51 Days"],
                     "interval": ["1 Day"],
                     "count": "5"
                 },
                 {
-                    "window": "late",
-                    "offset": ["56 Days"],
-                    "interval": ["1 Day"],
-                    "count": "107"
-                },
-                {
                     "window": "max",
-                    "offset": ["163 Days"],
+                    "offset": ["56 Days"],
                     "interval": ["1 Day"],
                     "count": "1"
                 }
@@ -39,81 +33,91 @@
             ]
         },
         {
-            "name": "ANCRV 2",
+            "name": "ancrv_2",
             "scheduleWindows": {
+            	"earliest": ["56 Days"],
                 "due": ["163 Days"],
                 "late": ["168 Days"],
-                "max": ["219 Days"]
+                "max": ["168 Days"]
             },
             "alerts": [           
                 {
                     "window": "due",
+                    "offset": ["56 Days"],
+                    "interval": ["1 Day"],
+                    "count": "107"
+                },
+                {
+                    "window": "late",
                     "offset": ["163 Days"],
                     "interval": ["1 Day"],
                     "count": "5"
                 },
-                {
-                    "window": "late",
-                    "offset": ["168 Days"],
-                    "interval": ["1 Day"],
-                    "count": "51"
-                },
                  {
                     "window": "max",
-                    "offset": ["219 Days"],
+                    "offset": ["168 Days"],
                     "interval": ["1 Day"],
                     "count": "1"
                 }                            
             ]
         },
         {
-            "name": "ANCRV 3",
+            "name": "ancrv_3",
             "scheduleWindows": {
+            	"earliest": ["168 Days"],
                 "due": ["219 Days"],
                 "late": ["224 Days"],
-                "max": ["247 Days"]
+                "max": ["224 Days"]
             },
             "alerts": [            	
                 {
                     "window": "due",
+                    "offset": ["168 Days"],
+                    "interval": ["1 Day"],
+                    "count": "51"
+                },
+                {
+                    "window": "late",
                     "offset": ["219 Days"],
                     "interval": ["1 Day"],
                     "count": "5"
                 },
                 {
-                    "window": "late",
-                    "offset": ["224 Days"],
-                    "interval": ["1 Day"],
-                    "count": "23"
-                },
-                {
                     "window": "max",
-                    "offset": ["247 Days"],
+                    "offset": ["224 Days"],
                     "interval": ["1 Day"],
                     "count": "1"
                 }                 
             ]
         },
         {
-            "name": "ANCRV 4",
+            "name": "ancrv_4",
             "scheduleWindows": {
+            	"earliest": ["224 Days"],
                 "due": ["247 Days"],
                 "late": ["252 Days"],
-                "max": ["253 Days"]
+                "max": ["252 Days"]
             },
             "alerts": [
                 {
                     "window": "due",
+                    "offset": ["224 Days"],
+                    "interval": ["1 Day"],
+                    "count": "23"
+                },
+                {
+                    "window": "late",
                     "offset": ["247 Days"],
                     "interval": ["1 Day"],
                     "count": "5"
                 },
-                {
-                    "window": "late",
+                 {
+                    "window": "max",
                     "offset": ["252 Days"],
                     "interval": ["1 Day"],
                     "count": "1"
-                }         
+                }                  
+                         
             ]
         }
     ]

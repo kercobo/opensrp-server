@@ -3,7 +3,9 @@
  */
 package org.opensrp.register.mcare.domain;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
@@ -39,6 +41,8 @@ public class Mother extends MotechBaseDataObject {
 	@JsonProperty
 	private String TODAY;
 	@JsonProperty
+	private String FWPSRLMP;
+	@JsonProperty
 	private String START;
 	@JsonProperty
 	private String END;
@@ -57,7 +61,7 @@ public class Mother extends MotechBaseDataObject {
 	@JsonProperty
 	private Map<String, String> ancVisitFour;
 	@JsonProperty
-	private Map<String, String> bnfVisit;
+	private List<Map<String, String>> bnfVisitDetails;
 	@JsonProperty
 	private Map<String, String> pncVisitOne;
 	@JsonProperty
@@ -72,7 +76,6 @@ public class Mother extends MotechBaseDataObject {
 		this.ancVisitTwo = new HashMap<>();
 		this.ancVisitThree = new HashMap<>();
 		this.ancVisitFour = new HashMap<>();
-		this.bnfVisit = new HashMap<>();
 		this.setIsClosed(false);
 	}
 	
@@ -95,9 +98,41 @@ public class Mother extends MotechBaseDataObject {
 		this.LOCATIONID = LOCATIONID;
 		return this;
 	}
+	public Mother withGOBHHID(String GOBHHID) {
+		this.GOBHHID = GOBHHID;
+		return this;
+	}
+	public Mother withJiVitAHHID(String JiVitAHHID) {
+		this.JiVitAHHID = JiVitAHHID;
+		return this;
+	}
+	public Mother withJFWWOMFNAME(String FWWOMFNAME) {
+		this.FWWOMFNAME = FWWOMFNAME;
+		return this;
+	}
+	public Mother withFWWOMNID(String FWWOMNID) {
+		this.FWWOMNID = FWWOMNID;
+		return this;
+	}
+	public Mother withFWWOMBID(String FWWOMBID) {
+		this.FWWOMBID = FWWOMBID;
+		return this;
+	}
+	public Mother withFWWOMAGE(String FWWOMAGE) {
+		this.FWWOMAGE = FWWOMAGE;
+		return this;
+	}
+	public Mother withIsClosed(String isClosed) {
+		this.isClosed = isClosed;
+		return this;
+	}
+	public Mother withTODAY(String TODAY) {
+		this.TODAY = TODAY;
+		return this;
+	}
 
-	public Mother withTODAY(String lmp) {
-		this.TODAY = lmp;
+	public Mother withFWPSRLMP(String FWPSRLMP) {
+		this.FWPSRLMP = FWPSRLMP;
 		return this;
 	}
 
@@ -110,7 +145,7 @@ public class Mother extends MotechBaseDataObject {
 		this.END = END;
 		return this;
 	}
-	public Mother withRelationalId(String relationalid) {
+	public Mother withRelationalid(String relationalid) {
 		this.relationalid = relationalid;
 		return this;
 	}
@@ -131,8 +166,8 @@ public class Mother extends MotechBaseDataObject {
         this.ancVisitFour = new HashMap<>(ancVisitFour);
         return this;
     }
-	public Mother withBNFVisit(Map<String, String> bnfVisit) {
-        this.bnfVisit = new HashMap<>(bnfVisit);
+	public Mother withBNFVisitDetails(List<Map<String, String>> bnfVisitDetails) {
+        this.bnfVisitDetails = bnfVisitDetails;
         return this;
     }
 	public Mother withPNCVisitOne(Map<String, String> pncVisitOne) {
@@ -163,10 +198,33 @@ public class Mother extends MotechBaseDataObject {
 	public String LOCATIONID() {
 		return LOCATIONID;
 	}
-	
+	public String GOBHHID() {
+		return GOBHHID;
+	}
+	public String JiVitAHHID() {
+		return JiVitAHHID;
+	}
+	public String FWWOMFNAME() {
+		return FWWOMFNAME;
+	}
+	public String FWWOMNID() {
+		return FWWOMNID;
+	}
+	public String FWWOMBID() {
+		return FWWOMBID;
+	}
+	public String FWWOMAGE() {
+		return FWWOMAGE;
+	}
+	public String isClosed() {
+		return isClosed;
+	}
 	public String TODAY() {
 		return TODAY;
 	}
+	public String FWPSRLMP() {
+		return FWPSRLMP;
+	}	
 	public String START() {
 		return START;
 	}
@@ -183,7 +241,7 @@ public class Mother extends MotechBaseDataObject {
 		return caseId;
 	}
 
-	public String getRelationalId() {
+	public String getRelationalid() {
 		return relationalid;
 	}
 
@@ -206,8 +264,11 @@ public class Mother extends MotechBaseDataObject {
 	public Map<String, String> ancVisitFour() {
 		return ancVisitFour;
 	}
-	public Map<String, String> bnfVisit() {
-		return bnfVisit;
+	public List<Map<String, String>> bnfVisitDetails() {
+		if (bnfVisitDetails == null) {
+			bnfVisitDetails = new ArrayList<>();
+		}
+		return bnfVisitDetails;
 	}
 	public Map<String, String> pncVisitOne() {
 		return pncVisitOne;

@@ -16,6 +16,7 @@ import org.ektorp.CouchDbConnector;
 import org.ektorp.ViewQuery;
 import org.ektorp.ViewResult;
 import org.opensrp.common.AllConstants;
+import org.opensrp.register.mcare.domain.Child;
 import org.opensrp.register.mcare.domain.Elco;
 import org.opensrp.register.mcare.domain.HouseHold;
 import org.opensrp.register.mcare.domain.Mother;
@@ -35,7 +36,7 @@ public class FormDataRepositoryImpl extends FormDataRepository{
     private static final String ID = "id";
     private static final String DETAILS = "details";
     private static final String DOCUMENT_TYPE = "type";
-    private static final String ID_FIELD_ON_ENTITY = "CASEID";
+    private static final String ID_FIELD_ON_ENTITY = "caseId";
     private static final String TODAY_FIELD_ON_ENTITY = "TODAY";
     private static final String LOCATIONID_FIELD_ON_ENTITY = "LOCATIONID";
     private static final String START_FIELD_ON_ENTITY = "START";
@@ -44,7 +45,7 @@ public class FormDataRepositoryImpl extends FormDataRepository{
     private static final String LOCATIONID = "existing_location";
     private static final String START = "start";
     private static final String END = "end";
-    private static final String CASE_ID_VIEW_NAME = "by_cASEID";
+    private static final String CASE_ID_VIEW_NAME = "by_caseId";
     private Map<String, Field[]> fieldSetMap;
     private CouchDbConnector db;
     private Map<String, String> designDocMap;
@@ -64,9 +65,11 @@ public class FormDataRepositoryImpl extends FormDataRepository{
         designDocMap.put(AllConstants.FormEntityTypes.HOUSE_HOLD_TYPE, "HouseHold");
         designDocMap.put(AllConstants.FormEntityTypes.ELCO_TYPE, "Elco");
         designDocMap.put(AllConstants.FormEntityTypes.MCARE_MOTHER_TYPE, "Mother");
+        designDocMap.put(AllConstants.FormEntityTypes.CHILD_TYPE, "Child");
         fieldSetMap.put(AllConstants.FormEntityTypes.HOUSE_HOLD_TYPE, HouseHold.class.getDeclaredFields());
         fieldSetMap.put(AllConstants.FormEntityTypes.ELCO_TYPE, Elco.class.getDeclaredFields());
         fieldSetMap.put(AllConstants.FormEntityTypes.MCARE_MOTHER_TYPE, Mother.class.getDeclaredFields());
+        fieldSetMap.put(AllConstants.FormEntityTypes.CHILD_TYPE, Child.class.getDeclaredFields());
     }
 
     public String saveEntity(String entityType, String fields) {

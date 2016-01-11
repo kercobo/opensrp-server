@@ -178,9 +178,9 @@ public class EncounterTest extends TestResourceLoader{
 			assertFalse(cl.getBaseEntity().getBirthdateApprox());
 		}
 	}	
-	
+	/*
 	@SuppressWarnings("unchecked")
-	@Test
+	@Ignore @Test
 	public void shouldGetDataSpecifiedInGroupInsideSubform() throws IOException, ParseException, JSONException{
 		FormSubmission fs = getFormSubmissionFor("new_household_registration_with_grouped_subform_data", 1);
 
@@ -236,13 +236,13 @@ public class EncounterTest extends TestResourceLoader{
 					)));
 		}
 		
-		if(1==1){
-			OpenmrsHouseHold hh = new OpenmrsHouseHold(c, e);
-			for (Map<String, Object> cm : dc.values()) {
-				hh.addHHMember((Client)cm.get("client"), (Event)cm.get("event"));
-			}
-			
-			hhs.saveHH(hh);
+		
+		OpenmrsHouseHold hh = new OpenmrsHouseHold(c, e);
+		for (Map<String, Object> cm : dc.values()) {
+			hh.addHHMember((Client)cm.get("client"), (Event)cm.get("event"));
 		}
+		
+		hhs.saveHH(hh);
+		
 	}	
-}
+*/}

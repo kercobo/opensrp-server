@@ -28,15 +28,15 @@ public class AllHouseHolds extends MotechBaseRepository<HouseHold> {
 	}
 
 	@GenerateView
-	public HouseHold findByCASEID(String caseId) {
-		List<HouseHold> houseHolds = queryView("by_cASEID", caseId);
+	public HouseHold findByCaseId(String caseId) {
+		List<HouseHold> houseHolds = queryView("by_caseId", caseId);
 		if (houseHolds == null || houseHolds.isEmpty()) {
 			return null;
 		}
 		return houseHolds.get(0);
 	}
 
-	@View(name = "all_households", map = "function(doc) { if (doc.type === 'HouseHold') { emit(doc.PROVIDERID, doc.CASEID); } }")
+	@View(name = "all_households", map = "function(doc) { if (doc.type === 'HouseHold') { emit(doc.PROVIDERID, doc.caseId); } }")
 	public List<HouseHold> findAllHouseHolds() {
 		return db.queryView(createQuery("all_households").includeDocs(true),
 				HouseHold.class);
