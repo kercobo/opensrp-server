@@ -44,7 +44,7 @@ public class HttpUtil {
 			PrintWriter writer = new PrintWriter(new OutputStreamWriter(con.getOutputStream(), charset ), true); // true = autoFlush, important!
 
 			// Send normal param.
-		    System.out.println(data);
+		    //System.out.println(data);
 		    writer.append(data);
 		    if (writer != null) writer.close();
 

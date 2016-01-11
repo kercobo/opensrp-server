@@ -6,6 +6,8 @@ import static org.springframework.http.HttpStatus.OK;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -45,7 +47,8 @@ public class UserController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/authenticate-user")
-    public ResponseEntity<HttpStatus> authenticateUser() {
+    public ResponseEntity<HttpStatus> authenticateUser(HttpServletRequest request) {
+    	//System.out.println("Client :" + request.getRemoteAddr());
         return new ResponseEntity<>(null, allowOrigin(opensrpSiteUrl), OK);
     }
 
